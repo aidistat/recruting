@@ -3,16 +3,14 @@ import styled from 'styled-components';
 
 let Btn = styled.button`
     width: 80px;
-    height: 40px;
-    font-weight: 700;
-    background: grey;
-    color: black;
+    height: 30px;
+    background: #dddddd;
     text-decoration: none;
     border-radius: 5px;
     border: 0;
+    cursor: pointer;
     :hover {
-        color: grey;
-        background: #000;
+        opacity: .8;
     }
 `
 
@@ -21,7 +19,7 @@ class Button extends Component {
         let { text, onclick } = this.props;
 
         return (
-            <Btn onClick={() => onclick && onclick()}>{text}</Btn>
+            <Btn onClick={onclick}>{text}</Btn>
         );
     }
 }

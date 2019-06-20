@@ -8,9 +8,10 @@ class Header extends Component {
             <div className="header">
                 <span className="logo">HR</span>
                 <ul className="nav">
-                    <li>Job.kg</li>
-                    <li>HeadHunter</li>
-                    <li>Zensoft.io</li>
+                    <li><a href="/jobkg">Job.kg</a></li>
+                    <li><a href="/hh">HeadHunter</a></li>
+                    <li><a href="/zensoftio">Zensoft.io</a></li>
+                    <li><a href="/wholedb">Whole DataBase</a></li>
                 </ul>
             </div>
         );

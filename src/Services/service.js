@@ -1,32 +1,20 @@
-import React, { Component } from "react";
+import axios from "axios";
+import { apiEndpoint } from '../settings';
 
-class Service extends Component {
-    state = {
-        posts: []
-    }
-    componentWillMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(json => this.setState({posts: json}))
-    }
+const axiosInstance = axios.create({
+    baseURL: apiEndpoint
+});
 
-    render() {
-        let { posts } = this.state;
-        return (
-            <div>
-                {
-                    posts.map(post => {return(
-                        <div>
-                            <p>{post.userId}</p>
-                            <p>{post.id}</p>
-                            <p>{post.title}</p>
-                            <p>{post.body}</p>
-                        </div>
-                    )})
-                }
-            </div>
-        );
-    }
+const fetchJson = async (url) => {
+    const response = await fetch(url);
+    return await response.json();
 }
 
-export default Service;
+const fetchJson = async (url) => {
+    const response = await fetch(url, {
+        body: {},
+        method: 'POST',
+        headers: {}
+    });
+    return await response.json();
+}

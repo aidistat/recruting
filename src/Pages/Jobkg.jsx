@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Table from "../Components/Table/Table"
+import Filters from "../Components/Filters/Filters"
 
 class Job extends Component {
     state = {
@@ -38,7 +38,7 @@ class Job extends Component {
     }
     render() {
         return (
-            <Table people={this.state.sortedPeople} columns='4' />
+            <Filters people={this.state.sortedPeople} columns='4' />
         );
     }
 }

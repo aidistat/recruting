@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
-import Button from "./Components/Button/Button";
-import Header from "./Components/Header/Header.jsx";
-import Filters from "./Components/Filters/Filters";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Jobkg from "./Pages/Jobkg";
-import Hh from "./Pages/Hh";
-import Zensoftio from "./Pages/Zensoftio";
-import Whole from "./Pages/Whole";
+import React, { Component } from "react";
+import './filters.css';
+import Select from "../Select/Select";
+import Calendar from "../Calendar/Calendar";
+import Button from "../Button/Button";
+import Table from "../Table/Table";
 
-export default class App extends Component {
+class Filters extends Component {
     state = {
         people: [
             {
@@ -90,19 +86,36 @@ export default class App extends Component {
         this.setState({sortedPeople: arr});
     }
 
-  render() {
-      let statuses = ["Checked", "Not Checked"];
-      let tech = ["JavaScript", "Python", "Java", "Project Manager", "QA Engineer", "C#"];
-     return (
-        <div className="App">
-          <Header />
-          <Router>
-              <Route path="/jobkg" component={Jobkg} />
-              <Route path="/hh" component={Hh} />
-              <Route path="/zensoftio" component={Zensoftio} />
-              <Route path="/wholedb" component={Whole} />
-          </Router>
-      </div>
-    );
-  }
+    render() {
+        let statuses = ["Checked", "Not Checked"];
+        let tech = ["JavaScript", "Python", "Java", "Project Manager", "QA Engineer", "C#"];
+        return (
+            <div className="filters">
+                <span>Profile</span>
+                <Select
+                    onchange={this.sortByLang}
+                    options={tech}
+                />
+                <span>from</span>
+                <Calendar id="dateFrom" />
+                <span>to</span>
+                <Calendar id="dateTo" />
+                <span>Status</span>
+                <Select
+                    onchange={this.sortByStatus}
+                    options={statuses}
+                />
+                <Button
+                    text="Apply"
+                    onclick={this.sortByDate}
+                />
+                <Table
+                    people={this.state.sortedPeople}
+                    columns={this.props.columns}
+                />
+            </div>
+        );
+    }
 }
+
+export default Filters;

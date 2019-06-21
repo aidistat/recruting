@@ -3,36 +3,10 @@ import './filters.css';
 import Select from "../Select/Select";
 import Calendar from "../Calendar/Calendar";
 import Button from "../Button/Button";
-import Table from "../Table/Table";
+import * as myConst from "/home/user/hr_frontend/src/Services/constants";
 
 class Filters extends Component {
     state = {
-        people: [
-            {
-                name: 'John',
-                language: 'Python',
-                date: '06/12/2019',
-                status:'Checked'
-            },
-            {
-                name: 'Jack',
-                language: 'Python',
-                date: '05/11/2019',
-                status:'Not Checked'
-            },
-            {
-                name: 'Jeremy',
-                language: 'Java',
-                date: '04/22/2019',
-                status:'Not Checked'
-            },
-            {
-                name: 'Joe',
-                language: 'C#',
-                date: '07/12/2019',
-                status:'Checked'
-            }
-        ],
         sortedPeople: []
     }
 
@@ -87,14 +61,12 @@ class Filters extends Component {
     }
 
     render() {
-        let statuses = ["Checked", "Not Checked"];
-        let tech = ["JavaScript", "Python", "Java", "Project Manager", "QA Engineer", "C#"];
         return (
             <div className="filters">
                 <span>Profile</span>
                 <Select
                     onchange={this.sortByLang}
-                    options={tech}
+                    options={myConst.tech}
                 />
                 <span>from</span>
                 <Calendar id="dateFrom" />
@@ -103,15 +75,11 @@ class Filters extends Component {
                 <span>Status</span>
                 <Select
                     onchange={this.sortByStatus}
-                    options={statuses}
+                    options={myConst.statuses}
                 />
                 <Button
                     text="Apply"
                     onclick={this.sortByDate}
-                />
-                <Table
-                    people={this.state.sortedPeople}
-                    columns={this.props.columns}
                 />
             </div>
         );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Table from "../Components/Table/Table"
 import Filters from "../Components/Filters/Filters";
+import * as myConst from "/home/user/hr_frontend/src/Services/constants";
 
 class Job extends Component {
     state = {
@@ -34,12 +35,12 @@ class Job extends Component {
     }
     componentWillMount() {
         this.setState({
-            sortedPeople: this.state.people
+            sortedPeople: myConst.data
         })
     }
     render() {
         return (
-            <Filters people={this.state.sortedPeople} columns='4' />
+            <Filters />
         );
     }
 }

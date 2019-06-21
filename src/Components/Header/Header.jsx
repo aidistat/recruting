@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './header.css';
+import * as myConst from "/home/user/hr_frontend/src/Services/constants";
 
 class Header extends Component {
 
@@ -8,10 +9,13 @@ class Header extends Component {
             <div className="header">
                 <span className="logo">HR</span>
                 <ul className="nav">
-                    <li><a href="/jobkg">Job.kg</a></li>
-                    <li><a href="/hh">HeadHunter</a></li>
-                    <li><a href="/zensoftio">Zensoft.io</a></li>
-                    <li><a href="/wholedb">Whole DataBase</a></li>
+                    {
+                        myConst.nav.map(menu => {
+                            return (
+                                <li><a href={menu.href}>{menu.title}</a></li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
         );

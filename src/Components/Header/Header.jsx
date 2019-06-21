@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './header.css';
-import * as myConst from "/home/user/hr_frontend/src/Services/constants";
+import * as myConst from "../../Services/constants";
 
 class Header extends Component {
 

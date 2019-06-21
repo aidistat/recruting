@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Filters from "../Components/Filters/Filters";
 import Table from "../Components/Table/Table";
-import * as myConst from "/home/user/hr_frontend/src/Services/constants";
+import * as myConst from "../Services/constants";
 
 
 class Job extends Component {

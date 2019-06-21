@@ -3,7 +3,7 @@ import './filters.css';
 import Select from "../Select/Select";
 import Calendar from "../Calendar/Calendar";
 import Button from "../Button/Button";
-import * as myConst from "/home/user/hr_frontend/src/Services/constants";
+import * as myConst from "../../Services/constants";
 
 class Filters extends Component {
     state = {

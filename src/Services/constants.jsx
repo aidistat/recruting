@@ -45,14 +45,36 @@ export const data = [
 
 export const statuses = ["Pending", "Applied", "Rejected", "Interview"];
 
-export const _data = data.map(i => {
-    return (
-        {
-            ...i,
-            Statuses: <Select options={statuses} />
-        }
-    )
-});
+export const _data = [
+    {
+        name: 'John',
+        language: 'Python',
+        date: '06/12/2019',
+        status: 'Checked',
+        statuses: <Select options={statuses} />
+    },
+    {
+        name: 'Jack',
+        language: 'Python',
+        date: '05/11/2019',
+        status: 'Not Checked',
+        statuses: <Select options={statuses} />
+    },
+    {
+        name: 'Jeremy',
+        language: 'Java',
+        date: '04/22/2019',
+        status: 'Not Checked',
+        statuses: <Select options={statuses} />
+    },
+    {
+        name: 'Joe',
+        language: 'C#',
+        date: '07/12/2019',
+        status: 'Checked',
+        statuses: <Select options={statuses} />
+    }
+];
 
 export const tech = ["JavaScript", "Python", "Java", "Project Manager", "QA Engineer", "C#"];
 

@@ -8,10 +8,27 @@ class Table extends Component {
 
         return (
             <div className="table">
+                <div className="headers">
+                    {
+                        headers.map(head => {
+                            return (
+                                <div className="headcell">{head.title}</div>
+                            )
+                        })
+                    }
+                </div>
                 {
-                    headers.map(head => {
+                    data.map(item => {
                         return (
-                            <div className="headcell">{head.title}</div>
+                            <div className="row">
+                                {headers.map(head => {
+                                    return (
+                                        <div className="cell">
+                                            {item[head.key]}
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         )
                     })
                 }

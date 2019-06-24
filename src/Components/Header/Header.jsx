@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './header.css';
-import * as myConst from "../../Services/constants";
+import * as Constants from "../../Services/constants";
 
 class Header extends Component {
 
@@ -10,7 +10,7 @@ class Header extends Component {
                 <span className="logo">HR</span>
                 <ul className="nav">
                     {
-                        myConst.nav.map(menu => {
+                        Constants.nav.map(menu => {
                             return (
                                 <li><a href={menu.href}>{menu.title}</a></li>
                             )

@@ -1,24 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Jobkg from "../../Pages/Jobkg";
-import Hh from "../../Pages/Headhunter";
-import Zensoftio from "../../Pages/Zensoftio";
-import Whole from "../../Pages/Whole";
+import { ROUTES } from '../../Constants/constants';
 
 class Routers extends Component {
-    state = {
-        sortedPeople: []
-    }
-    render() {
-        return (
-            <Router>
-                <Route path="/jobkg" component={Jobkg}/>
-                <Route path="/hh" component={Hh}/>
-                <Route path="/zensoftio" component={Zensoftio}/>
-                <Route path="/entiredb" component={Whole}/>
-            </Router>
-        );
-    }
+  render() {
+    return (
+      <Router>
+        {ROUTES.map((route, i) => {
+          return <Route key={i} path={route.path} component={route.component} />;
+        })}
+      </Router>
+    );
+  }
 }
 
 export default Routers;

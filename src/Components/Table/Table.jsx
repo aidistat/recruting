@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './table.css';
+import Pagination from "../Pagination/Pagination";
 
 class Table extends Component {
 
@@ -10,20 +11,20 @@ class Table extends Component {
             <div className="table">
                 <div className="headers">
                     {
-                        headers.map(head => {
+                        headers.map((head, i) => {
                             return (
-                                <div className="headcell">{head.title}</div>
+                                <div key={i} className="headcell">{head.title}</div>
                             )
                         })
                     }
                 </div>
                 {
-                    data.map(item => {
+                    data.map((item, i) => {
                         return (
-                            <div className="row">
-                                {headers.map(head => {
+                            <div key={i} className="row">
+                                {headers.map((head, index) => {
                                     return (
-                                        <div className="cell">
+                                        <div key={index} className="cell">
                                             {item[head.key]}
                                         </div>
                                     )
@@ -32,6 +33,7 @@ class Table extends Component {
                         )
                     })
                 }
+                <Pagination />
             </div>
         );
     }

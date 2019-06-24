@@ -9,9 +9,9 @@ class Select extends Component {
             <select className="selection" onChange={onchange}>
                 <option></option>
                 {
-                    options.map(option => {
+                    options.map((option, i) => {
                         return(
-                            <option>{option}</option>
+                            <option key={i}>{option}</option>
                         )
                     })
                 }

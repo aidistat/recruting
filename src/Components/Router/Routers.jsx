@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ROUTES } from '../../Constants/constants';
+import Report from '../../Pages/Report'
 
 class Routers extends Component {
   render() {
     return (
       <Router>
         {ROUTES.map((route, i) => {
-          return (
-            <Route key={i} path={route.path} component={route.component} />
-          );
+          return <Route key={i} path={route.path} component={route.component} />;
         })}
+        <Route path="/report" component={Report} />;
+
+
+
       </Router>
     );
   }

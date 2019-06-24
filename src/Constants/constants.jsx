@@ -55,28 +55,28 @@ export const ALL_PEOPLE = [
     language: 'Python',
     date: '06/12/2019',
     status: 'Checked',
-    statuses: <Select options={statuses} />
+    statuses: <Select options={STATUSES} />
   },
   {
     name: 'Jack',
     language: 'Python',
     date: '05/11/2019',
     status: 'Not Checked',
-    statuses: <Select options={statuses} />
+    statuses: <Select options={STATUSES} />
   },
   {
     name: 'Jeremy',
     language: 'Java',
     date: '04/22/2019',
     status: 'Not Checked',
-    statuses: <Select options={statuses} />
+    statuses: <Select options={STATUSES} />
   },
   {
     name: 'Joe',
     language: 'C#',
     date: '07/12/2019',
     status: 'Checked',
-    statuses: <Select options={statuses} />
+    statuses: <Select options={STATUSES} />
   }
 ];
 

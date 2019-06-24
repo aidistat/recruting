@@ -13,20 +13,26 @@ class Filters extends Component {
     render() {
         return (
             <div className="filters">
-                <span>Profile</span>
-                <Select
-                    onchange={this.sortByLang}
-                    options={Constants.tech}
-                />
-                <span>from</span>
-                <Calendar id="dateFrom" />
-                <span>to</span>
-                <Calendar id="dateTo" />
-                <span>Status</span>
-                <Select
-                    onchange={this.sortByStatus}
-                    options={Constants.status}
-                />
+                <div className="profile">
+                    <span>Profile</span>
+                    <Select
+                        onchange={this.sortByLang}
+                        options={Constants.tech}
+                    />
+                </div>
+                <div className="dates">
+                    <span>from</span>
+                    <Calendar id="dateFrom" />
+                    <span>to</span>
+                    <Calendar id="dateTo" />
+                </div>
+                <div className="status">
+                    <span>Status</span>
+                    <Select
+                        onchange={this.sortByStatus}
+                        options={Constants.status}
+                    />
+                </div>
                 <Button
                     text="Apply"
                     onclick={this.sortByDate}

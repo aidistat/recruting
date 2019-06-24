@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import './table.css';
-import Pagination from "../Pagination/Pagination";
 
 class Table extends Component {
 
@@ -33,7 +32,6 @@ class Table extends Component {
                         )
                     })
                 }
-                <Pagination />
             </div>
         );
     }

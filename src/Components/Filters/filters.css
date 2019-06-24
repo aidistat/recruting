@@ -1,0 +1,11 @@
+.filters {
+    width: 80%;
+    margin: 0 auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 80px;
+}
+.dates {
+    width: 150px;
+}

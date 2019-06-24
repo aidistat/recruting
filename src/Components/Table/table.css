@@ -1,0 +1,29 @@
+.headers {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding:0;
+    border: none;
+    background: rgba(0,0,0,0.25);
+}
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding:0;
+    border: none;
+}
+.cell {
+    width: 25%;
+    border: 1px solid rgba(0,0,0,0.25);
+    text-align: left;
+    padding: 5px;
+}
+.headcell {
+    width: 25%;
+    border: 1px solid rgba(0,0,0,0.25);
+    text-align: left;
+    padding: 5px;
+}

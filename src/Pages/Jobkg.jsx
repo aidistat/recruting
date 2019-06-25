@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import Filters from "../Components/Filters/Filters";
-import Table from "../Components/Table/Table";
-import * as Constants from "../Services/constants";
-import ReactTable from "react-table";
+import React, { Component } from 'react';
+import Filters from '../Components/Filters/Filters';
+import Table from '../Components/Table/Table';
+import * as Constants from '../Constants/constants';
 
-class Job extends Component {
+class JobKg extends Component {
   state = {
     sortedPeople: []
   };
@@ -13,11 +12,10 @@ class Job extends Component {
     return (
       <div>
         <Filters />
-        <Table headers={Constants.headers} data={Constants.data} />
-        <ReactTable columns={Constants._headers} data={Constants._data}/>
+        <Table headers={Constants.HEADERS} data={Constants.PEOPLE} />
       </div>
     );
   }
 }
 
-export default Job;
+export default JobKg;

@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import Table from "../Components/Table/Table"
-import Filters from "../Components/Filters/Filters";
-import * as Constants from "../Services/constants";
+import React, { Component } from 'react';
+import Table from '../Components/Table/Table';
+import Filters from '../Components/Filters/Filters';
+import * as Constants from '../Constants/constants';
 
-class Job extends Component {
-    state = {
-        sortedPeople: []
-    }
-    render() {
-        return (
-            <div>
-                <Filters />
-                <Table headers={Constants.headers} data={Constants.data}/>
-            </div>
-        );
-    }
+class Zensoftio extends Component {
+  state = {
+    sortedPeople: []
+  };
+  render() {
+    return (
+      <div>
+        <Filters />
+        <Table headers={Constants.HEADERS} data={Constants.PEOPLE} />
+      </div>
+    );
+  }
 }
 
-export default Job;
+export default Zensoftio;

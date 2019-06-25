@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import "./select.css";
+import React, { Component } from 'react';
+import './select.css';
 
 class Select extends Component {
   render() {
-    let { onchange, options } = this.props;
+    let { onChange, options } = this.props;
     return (
-      <select className="selection" onChange={onchange}>
+      <select className="selection" onChange={onChange}>
         <option></option>
-        {options.map(option => {
-          return <option>{option}</option>;
+        {options.map((option, i) => {
+          return <option key={i}>{option}</option>;
         })}
       </select>
     );

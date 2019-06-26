@@ -1,35 +1,15 @@
 import React, { Component } from 'react';
-import './table.css';
+import 'react-table/react-table.css';
+import usersContainer from "./usersContainer";
+import Users from "./Users";
+import ReactTable from "react-table";
 
 class Table extends Component {
   render() {
-    let { headers, data } = this.props;
+    let { columns, data } = this.props;
 
     return (
-      <div className="table">
-        <div className="headers">
-          {headers.map((head, i) => {
-            return (
-              <div key={i} className="headcell">
-                {head.title}
-              </div>
-            );
-          })}
-        </div>
-        {data.map((item, i) => {
-          return (
-            <div key={i} className="row">
-              {headers.map((head, index) => {
-                return (
-                  <div key={index} className="cell">
-                    {item[head.key]}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+      <ReactTable columns={columns} data={data} showPagination={false} defaultPageSize={10} />
     );
   }
 }

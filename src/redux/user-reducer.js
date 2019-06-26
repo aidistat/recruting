@@ -9,7 +9,7 @@ let initialState = {
 const userReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_USERS: {
-            return { ...state, users: [...state.users, ...action.users ]}
+            return { ...state, users: action.users }
         }
         default:
             return state;
@@ -17,3 +17,5 @@ const userReducer = (state = initialState, action) => {
 }
 
 export const setUsersAC = (users) => ({type: SET_USERS, users});
+
+export default userReducer;

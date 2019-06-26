@@ -16,7 +16,7 @@ class SelectDates extends Component {
                 <Calendar id="endBate" />
                 <Button
                 text="generate"
-                onclick={this.generateReport}
+                onClick={this.generateReport}
                 />
             </div>
         )

@@ -14,28 +14,68 @@ class Report extends Component {
             endDate: "29.01.01"
         },
         jobkg: {
-            java: "12",
-            python: "10",
-            javaScript: "5",
-            c: "1",
-            pm: "5",
-            qa: "4"
+            // java: 12,
+            // python: 10,
+            // javaScript: 5,
+            c: 1,
+            pm: 5,
+            qa: 4
         },
         hh: {
-            java: "12",
-            python: "10",
-            javaScript: "5",
-            c: "1",
-            pm: "5",
-            qa: "4"
+            java: 12,
+            // python: 10,
+            javaScript: 5,
+            c: 1,
+            pm: 5,
+            // qa: 4
         },
         zensoftio: {
-            java: "12",
-            python: "10",
-            javaScript: "5",
-            c: "1",
-            pm: "5",
-            qa: "4"
+            java: 12,
+            python: 10,
+            javaScript: 5,
+            c: 1,
+            // pm: 5,
+            qa: 4
+        },
+        Phoned: {
+            java: 12,
+            python: 10,
+            javaScript: 5,
+            // c: 1,
+            pm: 5,
+            qa: 4
+        },
+        interview: {
+            java: 12,
+            python: 10,
+            // javaScript: 5,
+            c: 1,
+            pm: 5,
+            qa: 4
+        },
+        pending: {
+            // java: 12,
+            python: 10,
+            javaScript: 5,
+            c: 1,
+            pm:5,
+            qa: 4
+        },
+        failure: {
+            java: 12,
+            python: 10,
+            javaScript: 5,
+            c: 1,
+            pm: 5,
+            qa: 4
+        },
+        recruited: {
+            java: 12,
+            python: 10,
+            javaScript: 5,
+            c: 1,
+            pm: 5,
+            qa: 4
         }
     }
     render() {
@@ -52,8 +92,8 @@ class Report extends Component {
                     />
                 </div>
             )
-        }else{
-            return(
+        } else {
+            return (
                 <SelectDates />
             )
         }

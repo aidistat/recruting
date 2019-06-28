@@ -9,6 +9,7 @@
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-native": "^0.59.9",

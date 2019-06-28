@@ -19,25 +19,13 @@ function createBuff(wb) {
 
 function generateWB(dates) {
     let wb = XLSX.utils.book_new();
-    wb.Props = {}
+    // wb.Props = {}
     wb.SheetNames.push("Report");
 
     let ws = XLSX.utils.json_to_sheet(dates, {header:["A","B","C","D","E","F"], skipHeader:true});
     wb.Sheets["Report"] = ws;
     var out = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
     return out;
-}
-
-
-
-
-function getAll(obj){
-    const keys = Object.keys(obj);
-    let result = 0
-    for(let i=0; i< keys.length;i++){
-        result += obj[keys[i]]
-    }
-    return result;
 }
 
 
@@ -57,7 +45,7 @@ function getAllResume(obj){
                     value += obj[origin[originIterator]][key]
                 };
             }
-            return new Object({A: key, B: value})
+            return {A: key, B: value}
         }
     )
     return result
@@ -65,9 +53,9 @@ function getAllResume(obj){
 }
 
 function generateArray(date){
-    const hh = date.dates.hh;
-    const jobkg = date.dates.jobkg;
-    const gmail = date.dates.zensoftio;
+    const hh = date.dates.sources.hh;
+    const jobkg = date.dates.sources.jobkg;
+    const gmail = date.dates.sources.gmail;
     let resultArray = 
     [
         {A:"Период:", B:`${date.dates.interval.startDate} - ${date.dates.interval.endDate}`},
@@ -83,7 +71,7 @@ function generateArray(date){
     ];
     const all = getAllResume({hh: hh, jobkg: jobkg, gmail: gmail})
     resultArray = resultArray.concat(all)
-    console.log(resultArray)
+    // console.log(resultArray)
 
     return resultArray;
 }

@@ -2,23 +2,35 @@ import React, { Component } from "react";
 import "./chart.css"
 
 class Chart extends Component {
+    getTotalSumm = (obj) => {
+        const keysArray = Object.keys(obj);
+        let totalArray = keysArray.map((key) => {
+            if (obj[key]) {
+                return obj[key];
+            }
+        })
+        const resultSumm = totalArray.reduce((a, b) => a + b)
+
+        return resultSumm;
+    }
     render() {
         return (
             <div className="Chart">
-                <div id="1">
-                    <p>Обзвонено</p>
+            {console.log(this.props)}
+                <div className="Phoned">
+                    <p>Обзвонено {this.getTotalSumm(this.props.statuses.phoned)}</p>
                 </div>
-                <div id="2">
-                    <p>Приглашено на собеседование   {'5'}</p>
+                <div className="Interview">
+                    <p>Приглашено на собеседование   {this.getTotalSumm(this.props.statuses.interview)}</p>
                 </div>
-                <div id="3">
-                    <p>В ожидании</p>
+                <div className="Pending">
+                    <p>В ожидании {this.getTotalSumm(this.props.statuses.pending)}</p>
                 </div>
-                <div id="4">
-                    <p>отказ</p>
+                <div className="Failure">
+                    <p>отказ  {this.getTotalSumm(this.props.statuses.failure)}</p>
                 </div>
-                <div id="5">
-                    <p>Принято</p>
+                <div className="Recruited">
+                    <p>Принято   {this.getTotalSumm(this.props.statuses.recruited)}</p>
                 </div>
             </div>
         )

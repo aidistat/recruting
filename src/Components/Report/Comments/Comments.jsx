@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import TextInput from "react-native"
+import React, {Component} from 'react';
+import './comments.css'
 
 class Comments extends Component{
     render(){

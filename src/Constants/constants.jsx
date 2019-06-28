@@ -90,6 +90,18 @@ export const TEST = [
   {
     Header: 'Name',
     accessor: 'name'
+  },
+  {
+    Header: 'test',
+    accessor: 'test'
+  },
+  {
+    Header: 'Actions',
+    Cell: props => {
+      return(
+          <button onClick={i => console.log(i)}>DELETE</button>
+      )
+    }
   }
 ]
 export const COLUMNS = [

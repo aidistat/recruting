@@ -9,7 +9,7 @@ class JobKg extends Component {
 
     componentDidMount() {
         // this.props.setUsers(Constants.PEOPLE)
-        fetch('https://social-network.samuraijs.com/api/1.0/users')
+        fetch('https://social-network.samuraijs.com/api/1.0/users?page=1')
             .then(response => response.json())
             .then(data => this.props.setUsers(data.items))
     }

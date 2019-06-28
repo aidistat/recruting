@@ -1,29 +1,34 @@
-.headers {
-    width: 100%;
+.pagination {
     display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding:0;
-    border: none;
-    background: rgba(0,0,0,0.25);
+    justify-content: center;
+    align-items: center;
 }
-.row {
-    width: 100%;
+.first {
+    border-radius: 20px 0 0 20px;
+}
+.last {
+    border-radius: 0 20px 20px 0;
+}
+.active {
+    background: #dddddd;
+}
+.pagination li {
     display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding:0;
-    border: none;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #dddddd;
+    list-style: none;
+    width: 40px;
+    height: 30px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
-.cell {
-    width: 25%;
-    border: 1px solid rgba(0,0,0,0.25);
-    text-align: left;
-    padding: 5px;
+.pagination li a {
+    color: #8c8787;
 }
-.headcell {
-    width: 25%;
-    border: 1px solid rgba(0,0,0,0.25);
-    text-align: left;
-    padding: 5px;
+.active a {
+    color: #000 !important;
+}
+.pagination li:hover {
+    background: #dddddd;
+    cursor: pointer;
 }

@@ -44,10 +44,113 @@ export const PEOPLE = [
     language: 'C#',
     date: '07/12/2019',
     status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked'
   }
+];
+export const TEST = [
+  {
+    Header: 'ID',
+    accessor: 'id'
+  },
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'test',
+    accessor: 'test'
+  },
+  {
+    Header: 'Actions',
+    Cell: props => {
+      return(
+          <button onClick={i => console.log(i)}>DELETE</button>
+      )
+    }
+  }
+]
+export const COLUMNS = [
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'Language',
+    accessor: 'language'
+  },
+  {
+    Header: 'Date',
+    accessor: 'date'
+  },
+  {
+    Header: 'Status',
+    accessor: 'status'
+  },
 ];
 
 export const STATUSES = ['Pending', 'Applied', 'Rejected', 'Interview'];
+
+export const COLUMNS_WITH_STATUSES = [
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'Language',
+    accessor: 'language'
+  },
+  {
+    Header: 'Date',
+    accessor: 'date'
+  },
+  {
+    Header: 'Status',
+    accessor: 'status'
+  },
+  {
+    Header: 'Statuses',
+    Cell: props => {
+      return(
+          <Select options={STATUSES} />
+      )
+    }
+  },
+]
 
 export const ALL_PEOPLE = [
   {
@@ -69,6 +172,48 @@ export const ALL_PEOPLE = [
     language: 'Java',
     date: '04/22/2019',
     status: 'Not Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
+    statuses: <Select options={STATUSES} />
+  },
+  {
+    name: 'Joe',
+    language: 'C#',
+    date: '07/12/2019',
+    status: 'Checked',
     statuses: <Select options={STATUSES} />
   },
   {

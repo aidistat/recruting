@@ -23,7 +23,7 @@ class Calendar extends Component {
         id={id}
         onChange={e => this.bind('date', e)}
         value={moment(date).isValid && moment(date).format('YYYY-MM-DD')}
-      ></input>
+      />
     );
   }
 }

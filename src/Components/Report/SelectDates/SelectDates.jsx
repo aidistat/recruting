@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Calendar from "../../Calendar/Calendar";
 import Button from "../../Button/Button"
+import reportThunk from "../../../redux/report/report-thunk"
 
 
 class SelectDates extends Component {
-    generateReport(){
-        console.log("click")
+    generateReport = () => {
+        this.props.generateReport('fdgds')
     }
     render() {
         return (
@@ -15,12 +17,16 @@ class SelectDates extends Component {
                 <span> - </span>
                 <Calendar id="endBate" />
                 <Button
-                text="generate"
-                onClick={this.generateReport}
+                    text="generate"
+                    onClick={this.generateReport}
                 />
             </div>
         )
     }
 }
 
-export default SelectDates
+const mapDispatchToProps = { generateReport: reportThunk }
+
+export default connect(null, mapDispatchToProps)(SelectDates);
+
+// export default SelectDates

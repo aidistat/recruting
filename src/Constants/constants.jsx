@@ -1,9 +1,9 @@
 import React from 'react';
 import Select from '../Components/Select/Select';
-import JobKg from "../Pages/Jobkg";
-import HeadHunter from "../Pages/Headhunter";
-import Zensoftio from "../Pages/Zensoftio";
-import Whole from "../Pages/Whole";
+import JobKg from '../Pages/Jobkg';
+import HeadHunter from '../Pages/Headhunter';
+import Zensoftio from '../Pages/Zensoftio';
+import Whole from '../Pages/Whole';
 
 export const HEADERS = [
   { key: 'name', title: 'Full Name', sortable: true },
@@ -98,12 +98,10 @@ export const TEST = [
   {
     Header: 'Actions',
     Cell: props => {
-      return(
-          <button onClick={i => console.log(i)}>DELETE</button>
-      )
+      return <button onClick={i => console.log(i)}>DELETE</button>;
     }
   }
-]
+];
 export const COLUMNS = [
   {
     Header: 'Name',
@@ -120,7 +118,7 @@ export const COLUMNS = [
   {
     Header: 'Status',
     accessor: 'status'
-  },
+  }
 ];
 
 export const STATUSES = ['Pending', 'Applied', 'Rejected', 'Interview'];
@@ -145,12 +143,10 @@ export const COLUMNS_WITH_STATUSES = [
   {
     Header: 'Statuses',
     Cell: props => {
-      return(
-          <Select options={STATUSES} />
-      )
+      return <Select options={STATUSES} />;
     }
-  },
-]
+  }
+];
 
 export const ALL_PEOPLE = [
   {
@@ -237,8 +233,8 @@ export const TECHNOLOGIES = [
 export const STATUS = ['Checked', 'Not Checked'];
 
 export const ROUTES = [
-  { title: 'Job.kg', path: '/jobkg',  component: JobKg },
-  { title: 'HeadHunter', path: '/hh',  component: HeadHunter },
-  { title: 'Zensoft.io', path: '/zensoftio',  component: Zensoftio },
-  { title: 'Entire DataBase', path: '/entiredb',  component: Whole }
+  { title: 'Job.kg', path: '/jobkg', component: JobKg },
+  { title: 'HeadHunter', path: '/hh', component: HeadHunter },
+  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio },
+  { title: 'Entire DataBase', path: '/entiredb', component: Whole }
 ];

@@ -13,7 +13,7 @@ class Table extends Component {
   pageChanged = async pageNumber => {
     this.setState({
       pageNumber: pageNumber
-    })
+    });
     const response = await fetch(
       `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}`
     );
@@ -30,7 +30,7 @@ class Table extends Component {
       };
     });
 
-    console.log(data)
+    console.log(data);
 
     return (
       <div>
@@ -39,7 +39,6 @@ class Table extends Component {
           data={data}
           defaultPageSize={10}
           showPagination={false}
-          filterable={true}
         />
         <Pagination
           innerClass="pagination"

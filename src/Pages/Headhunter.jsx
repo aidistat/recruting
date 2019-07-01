@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Table from '../Components/Table/Table';
 import Filters from '../Components/Filters/Filters';
 import * as Constants from '../Constants/constants';
-import {setUsersAC} from "../redux/user-reducer";
-import {connect} from "react-redux";
+import { setUsersAC } from '../redux/user-reducer';
+import { connect } from 'react-redux';
 
 class HeadHunter extends Component {
-    componentDidMount() {
-        this.props.setUsers(Constants.PEOPLE)
-    }
+  componentDidMount() {
+    this.props.setUsers(Constants.PEOPLE);
+  }
 
   render() {
     return (
@@ -20,20 +20,23 @@ class HeadHunter extends Component {
   }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount
-    }
-}
+let mapStateToProps = state => {
+  return {
+    users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    totalUsersCount: state.usersPage.totalUsersCount
+  };
+};
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
+let mapDispatchToProps = dispatch => {
+  return {
+    setUsers: users => {
+      dispatch(setUsersAC(users));
     }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeadHunter);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeadHunter);

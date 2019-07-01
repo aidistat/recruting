@@ -1,0 +1,140 @@
+.wrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper div {
+    position: relative;
+    margin-bottom: 5px;
+    line-height: 45px;
+}
+.called:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid aquamarine;
+    width: 0;
+}
+.invited:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid blue;
+    width: 0;
+}
+.pending:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid green;
+    width: 0;
+}
+.rejected:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid red;
+    width: 0;
+}
+.applied:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid white;
+    border-left: 20px solid yellow;
+    width: 0;
+}
+.inner:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    border-bottom: 50px solid white;
+    border-right: 20px solid black;
+    width: 0;
+}
+.called .inner:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid aquamarine;
+    border-left: 20px solid black;
+    width: 0;
+}
+.invited .inner:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid blue;
+    border-left: 20px solid black;
+    width: 0;
+}
+.pending .inner:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid green;
+    border-left: 20px solid black;
+    width: 0;
+}
+.rejected .inner:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid red;
+    border-left: 20px solid black;
+    width: 0;
+}
+.applied .inner:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-bottom: 50px solid yellow;
+    border-left: 20px solid black;
+    width: 0;
+}
+.called {
+    position: relative;
+    width: 80%;
+    height: 50px;
+    background: aquamarine;
+}
+.invited {
+    position: relative;
+    width: 73%;
+    height: 50px;
+    background: blue;
+}
+.pending {
+    position: relative;
+    width: 66%;
+    height: 50px;
+    background: green;
+}
+.rejected {
+    position: relative;
+    width: 59%;
+    height: 50px;
+    background: red;
+}
+.applied {
+    position: relative;
+    width: 52%;
+    height: 50px;
+    background: yellow;
+}
+.inner {
+    display: inline-block;
+    line-height: 45px;
+    float: left;
+    text-align: center;
+    height: 100%;
+    width: 200px;
+    background: #000;
+    color: #fff;
+}

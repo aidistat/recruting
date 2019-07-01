@@ -1,8 +1,8 @@
-import {combineReducers, createStore} from "redux";
-import usersReducer from "./user-reducer";
+import { combineReducers, createStore } from 'redux';
+import usersReducer from './user-reducer';
 
 let reducers = combineReducers({
-    usersPage: usersReducer
+  usersPage: usersReducer
 });
 
 let store = createStore(reducers);

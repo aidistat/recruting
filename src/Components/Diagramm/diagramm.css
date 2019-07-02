@@ -23,7 +23,7 @@
     position: absolute;
     top: 0; right: 0;
     border-bottom: 50px solid white;
-    border-left: 20px solid blue;
+    border-left: 20px solid #ffff30;
     width: 0;
 }
 .pending:before {
@@ -31,7 +31,7 @@
     position: absolute;
     top: 0; right: 0;
     border-bottom: 50px solid white;
-    border-left: 20px solid green;
+    border-left: 20px solid darkorange;
     width: 0;
 }
 .rejected:before {
@@ -47,7 +47,7 @@
     position: absolute;
     top: 0; right: 0;
     border-bottom: 50px solid white;
-    border-left: 20px solid yellow;
+    border-left: 20px solid green;
     width: 0;
 }
 .inner:before {
@@ -70,7 +70,7 @@
     content: '';
     position: absolute;
     top: 0; right: 0;
-    border-bottom: 50px solid blue;
+    border-bottom: 50px solid #ffff30;
     border-left: 20px solid black;
     width: 0;
 }
@@ -78,7 +78,7 @@
     content: '';
     position: absolute;
     top: 0; right: 0;
-    border-bottom: 50px solid green;
+    border-bottom: 50px solid darkorange;
     border-left: 20px solid black;
     width: 0;
 }
@@ -94,7 +94,7 @@
     content: '';
     position: absolute;
     top: 0; right: 0;
-    border-bottom: 50px solid yellow;
+    border-bottom: 50px solid green;
     border-left: 20px solid black;
     width: 0;
 }
@@ -108,13 +108,13 @@
     position: relative;
     width: 73%;
     height: 50px;
-    background: blue;
+    background: #ffff30;
 }
 .pending {
     position: relative;
     width: 66%;
     height: 50px;
-    background: green;
+    background: darkorange;
 }
 .rejected {
     position: relative;
@@ -126,7 +126,7 @@
     position: relative;
     width: 52%;
     height: 50px;
-    background: yellow;
+    background: green;
 }
 .inner {
     display: inline-block;

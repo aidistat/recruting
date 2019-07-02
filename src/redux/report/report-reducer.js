@@ -2,6 +2,7 @@ import { handleActions } from 'redux-actions';
 import { startRequest, successRequest, errorRequest } from './report-actions'
 
 const initialState = {
+    isReporting: false,
     isLoading: false,
     isError: false,
     error: '',
@@ -15,8 +16,8 @@ const initialState = {
 
 const reportReducer = handleActions(
     {
-        [startRequest]: (state) => ({ ...state, isLoading: true }),
-        [successRequest]: (state, { payload }) => ({ ...state, isLoading: false, isError: false, data: payload }),
+        [startRequest]: (state) => ({ ...state, isLoading: true, isReporting: false, }),
+        [successRequest]: (state, { payload }) => ({ ...state, isReporting: true, isLoading: false, isError: false, data: payload }),
         [errorRequest]: (state, { payload }) => ({ ...state, isLoading: false, isError: true, error: payload })
     },
     initialState

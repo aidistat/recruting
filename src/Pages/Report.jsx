@@ -16,29 +16,30 @@ class Report extends Component {
     render() {
         return (
             <div>
-                { this.props.isReporting ?
-                    <React.Fragment>
-                        <SelectDates />
-                        {this.props.isLoading ? 'Loading...' :
-                            this.props.isError ? <Error error={this.props.error} /> :
+                <SelectDates />
+                {this.props.isError ? <Error error={this.props.error} /> :
+                    this.props.isReporting ?
+                        <React.Fragment>
+                            {this.props.isLoading ? 'Loading...' :
+
                                 <React.Fragment>
                                     <Diagramm
                                         data={this.props.reportData.statusesList}
                                     />
                                     <Vacncy />
                                     <CVSources
-                                data={this.props.reportData.sourcesList}
-                            />
+                                        data={this.props.reportData.sourcesList}
+                                    />
                                     <LanguagesList />
                                     <Comments />
                                     <DownloadXLSX
                                         data={this.props.reportData}
                                     />
                                     <Summ
-                                    summ={this.props.reportData.sum}
+                                        summ={this.props.reportData.sum}
                                     />
                                 </React.Fragment>}
-                    </React.Fragment> : <SelectDates /> }
+                        </React.Fragment> : <div></div>}
             </div>
         )
     }

@@ -1,6 +1,13 @@
 .sourses{
-  position: relative;
+  width: 30%;
+}
 
-      top: 25%;
-      left: 5%;
+.sourse-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sourse-logo{
+  margin-right: 10px;
 }

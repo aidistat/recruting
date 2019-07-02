@@ -22,15 +22,28 @@ class CVSources extends Component {
             <div className="sourses">
                 {this.props.data.map((obj) => (
                     <div key={obj.source}>
-                        {logos[obj.source] ? <img src={logos[obj.source]} alt={obj.source} /> : obj.source}
-                        <span>Откликнулось {obj.count} человек</span>
-                        {obj.positionList.map((languages) => (
-                            <LanguagesList key={languages.position}
-                                languages={{ languages: languages.position, value: languages.count }}
+                        <div className="sourse-title">
+                            <img className="sourse-logo" src={logos[obj.source]} alt={obj.source} />
+                            <span>Откликнулось {obj.count} человек</span>
+                        </div>
+                        {obj.positionList.map(({position, count}) => (
+                            <LanguagesList
+                                key={position}
+                                position={position}
+                                count={count}
                             />
                         ))}
                     </div>
                 ))}
+                <div className="sum">
+                    <hr align="center" width="100%" size="2" color="aquamarine" />
+                    <div>Суммарно {this.props.summary.count}</div>
+                    <div>{this.props.summary.positionList.map((position) => (
+                        <LanguagesList key={position.position}
+                            languages={{ languages: position.position, value: position.count }}
+                        />
+                    ))}</div>
+                </div>
             </div>
         )
     }

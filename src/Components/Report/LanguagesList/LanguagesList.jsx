@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
+import './languagesList.css';
 
 class LanguagesList extends Component {
     render() {
         return (
-            <div className="languages">
-                {this.props.languages ? <div><span>{this.props.languages.languages}  </span><span>{this.props.languages.value}</span></div> : <span></span> }
+            <div className="language">
+                <span className="language-position">{this.props.position}  </span>
+                <span className="language-count">{this.props.count}</span>
             </div>
         )
     }

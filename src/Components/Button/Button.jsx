@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import './button.css';
+import Btn from '@material-ui/core/Button';
 
 class Button extends Component {
   render() {
     let { text, onClick } = this.props;
-    return <button onClick={onClick}>{text}</button>;
+    return (
+      <Btn variant="contained" onClick={onClick}>
+        {text}
+      </Btn>
+    );
   }
 }
 

@@ -4,12 +4,20 @@ import Select from '../Select/Select';
 import Calendar from '../Calendar/Calendar';
 import Button from '../Button/Button';
 import * as Constants from '../../Constants/constants';
+import {setUsersAC} from "../../redux/user-reducer";
+import {connect} from "react-redux";
 
 class Filters extends Component {
   state = {
     sortedPeople: []
   };
-
+fetch = async () => {
+    const response = await fetch(
+        `https://social-network.samuraijs.com/api/1.0/users`
+    );
+    const json = await response.json();
+    this.props.setUsers(json.items);
+};
   render() {
     return (
       <div className="filters">
@@ -27,10 +35,29 @@ class Filters extends Component {
           <span>Status</span>
           <Select onchange={this.sortByStatus} options={Constants.STATUS} />
         </div>
-        <Button text="Apply" onclick={this.sortByDate} />
+        <Button text="Apply" onClick={this.fetch} />
       </div>
     );
   }
 }
 
-export default Filters;
+let mapStateToProps = state => {
+    return {
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount
+    };
+};
+
+let mapDispatchToProps = dispatch => {
+    return {
+        setUsers: users => {
+            dispatch(setUsersAC(users));
+        }
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Filters);

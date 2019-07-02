@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     let { text, onClick } = this.props;
     return (
-      <Btn variant="contained" onClick={onClick}>
+      <Btn variant="contained" onClick={onClick} size='small'>
         {text}
       </Btn>
     );

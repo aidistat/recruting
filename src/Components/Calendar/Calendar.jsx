@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './calendar.css';
-const moment = require('moment');
+import TextField from "@material-ui/core/TextField";
 
 class Calendar extends Component {
   state = {
@@ -14,16 +14,17 @@ class Calendar extends Component {
   };
 
   render() {
-    let { date } = this.state;
-    let { id } = this.props;
+    let { label } = this.props;
     return (
-      <input
-        className="calendar"
-        type="date"
-        id={id}
-        onChange={e => this.bind('date', e)}
-        value={moment(date).isValid && moment(date).format('YYYY-MM-DD')}
-      />
+        <TextField
+            id="date"
+            label={label}
+            type="date"
+            onChange={(e) => this.bind('date', e)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+        />
     );
   }
 }

@@ -30,8 +30,6 @@ class Table extends Component {
       };
     });
 
-    console.log(data);
-
     return (
       <div>
         <ReactTable

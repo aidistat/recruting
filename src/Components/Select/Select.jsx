@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import './select.css';
+import SelectUI from '@material-ui/core/Select';
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
 
 class Select extends Component {
   render() {
-    let { onChange, options } = this.props;
+    let { onChange, options, title } = this.props;
     return (
-      <select className="selection" onChange={onChange}>
-        <option></option>
-        {options.map((option, i) => {
-          return <option key={i}>{option}</option>;
-        })}
-      </select>
+        <FormControl>
+          <InputLabel htmlFor="age-native-simple">{title}</InputLabel>
+          <SelectUI
+              native
+              onChange={onChange}
+          >
+            <option value="" />
+            {options.map((option, i) => {
+              return <option key={i}>{option}</option>;
+            })}
+          </SelectUI>
+        </FormControl>
     );
   }
 }

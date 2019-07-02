@@ -14,18 +14,12 @@ class Filters extends Component {
     return (
       <div className="filters">
         <div className="profile">
-          <span>Profile</span>
-          <Select onchange={this.sortByLang} options={Constants.TECHNOLOGIES} />
+          <Select onchange={this.sortByLang} options={Constants.TECHNOLOGIES} title="Profile" />
         </div>
-        <div className="dates">
-          <span>from</span>
-          <Calendar id="dateFrom" />
-          <span>to</span>
-          <Calendar id="dateTo" />
-        </div>
+          <Calendar id="dateFrom" label="Date From" />
+          <Calendar id="dateTo" label="Date To" />
         <div className="status">
-          <span>Status</span>
-          <Select onchange={this.sortByStatus} options={Constants.STATUS} />
+          <Select onchange={this.sortByStatus} options={Constants.STATUS} title="Status" />
         </div>
         <Button text="Apply" onclick={this.sortByDate} />
       </div>

@@ -5,8 +5,8 @@ import generateXLSX from "../../../Services/generateAndDownloadXLSX"
 
 class DownloadXLSX extends Component {
     download = () => {
-        const dates = this.props
-        generateXLSX(dates)
+        const data = this.props.data
+        generateXLSX(data)
     }
     render() {
         return (

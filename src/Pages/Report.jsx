@@ -23,7 +23,7 @@ class Report extends Component {
                             this.props.isError ? <Error error={this.props.error} /> :
                                 <React.Fragment>
                                     <Diagramm
-                                        dates={this.props.reportData.statusesList}
+                                        data={this.props.reportData.statusesList}
                                     />
                                     <Vacncy />
                                     <CVSources
@@ -32,7 +32,7 @@ class Report extends Component {
                                     <LanguagesList />
                                     <Comments />
                                     <DownloadXLSX
-                                        dates={this.props.reportData}
+                                        data={this.props.reportData}
                                     />
                                     <Summ
                                     summ={this.props.reportData.sum}

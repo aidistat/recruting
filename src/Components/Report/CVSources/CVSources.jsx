@@ -22,8 +22,8 @@ class CVSources extends Component {
             <div className="sourses">
                 {this.props.data.map((obj) => (
                     <div key={obj.source}>
-                        {logos[obj.source] ? <img src={logos[obj.source]} /> : obj.source}
-                        <span>Откликнулось {this.props.data.count} человек</span>
+                        {logos[obj.source] ? <img src={logos[obj.source]} alt={obj.source} /> : obj.source}
+                        <span>Откликнулось {obj.count} человек</span>
                         {obj.positionList.map((languages) => (
                             <LanguagesList key={languages.position}
                                 languages={{ languages: languages.position, value: languages.count }}

@@ -29,48 +29,21 @@ function generateWB(dates) {
 }
 
 
-function getAllResume(obj){
-    let result = [];
-    const origin = Object.keys(obj);
-    let keys = []
-    for(let i = 0; i < origin.length; i++){
-        keys = keys.concat(Object.keys(obj[origin[i]]));
-    }
-    keys = Array.from(new Set(keys));
-    result = keys.map(
-        (key) =>{
-            let value = 0;
-            for(let originIterator = 0; originIterator < origin.length; originIterator ++){
-                if(obj[origin[originIterator]][key]){
-                    value += obj[origin[originIterator]][key]
-                };
-            }
-            return {A: key, B: value}
-        }
-    )
-    return result
-
-}
-
-function generateArray(date){
-    const hh = date.dates.sources.hh;
-    const jobkg = date.dates.sources.jobkg;
-    const gmail = date.dates.sources.gmail;
+function generateArray(data){
+    
     let resultArray = 
     [
-        {A:"Период:", B:`${date.dates.interval.startDate} - ${date.dates.interval.endDate}`},
+        {A:"Период:", B:`${data.dates.start} - ${data.dates.end}`},
         {},
         {A: "Вакансии:"},
         {},
         {},
         {},
         {},
-        {A: `Принято и просмотрено резюме (job.kg + HH.kg + корпоративная почта).`},
-
+        {A: `Принято и просмотрено резюме (job.kg + HH.kg + корпоративная почта).`, D: ``},
+        
 
     ];
-    const all = getAllResume({hh: hh, jobkg: jobkg, gmail: gmail})
-    resultArray = resultArray.concat(all)
     // console.log(resultArray)
 
     return resultArray;

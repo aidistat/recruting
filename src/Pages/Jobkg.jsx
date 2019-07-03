@@ -4,20 +4,38 @@ import Table from '../Components/Table/Table';
 import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
+import Search from '../Components/Search/Search';
 
 class JobKg extends Component {
+  state = {
+    searchResults: []
+  };
+
+  async doSearch(value) {
+    let response = null;
+    if (!value || value === ' ') {
+      response = await fetch(`http://localhost:8081/summary`);
+      let data = await response.json();
+      this.props.setUsers(data.content);
+    } else {
+      response = await fetch(`http://localhost:8081/summary?fullName=${value}`);
+      let data = await response.json();
+      this.props.setUsers(data.content);
+    }
+  }
   componentDidMount() {
     // this.props.setUsers(Constants.PEOPLE)
-    fetch('https://social-network.samuraijs.com/api/1.0/users?page=1')
+    fetch('http://localhost:8081/summary')
       .then(response => response.json())
-      .then(data => this.props.setUsers(data.items));
+      .then(data => this.props.setUsers(data.content));
   }
 
   render() {
     return (
       <div>
         <Filters />
-        <Table columns={Constants.TEST} data={this.props.users} />
+        <Search onSearch={value => this.doSearch(value)} />
+        <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>
     );
   }

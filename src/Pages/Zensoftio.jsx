@@ -4,6 +4,7 @@ import Filters from '../Components/Filters/Filters';
 import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
+import Search from "../Components/Search/Search";
 
 class Zensoftio extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class Zensoftio extends Component {
     return (
       <div>
         <Filters />
+        <Search />
         <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>
     );

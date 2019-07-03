@@ -4,21 +4,7 @@ import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
 import Whole from '../Pages/Whole';
-
-export const HEADERS = [
-  { key: 'name', title: 'Full Name', sortable: true },
-  { key: 'language', title: 'Language', sortable: true },
-  { key: 'date', title: 'Date', sortable: true },
-  { key: 'status', title: 'Status', sortable: true }
-];
-
-export const HEADER_WITH_STATUSES = [
-  { key: 'name', title: 'Full Name', sortable: true },
-  { key: 'language', title: 'Language', sortable: true },
-  { key: 'date', title: 'Date', sortable: true },
-  { key: 'status', title: 'Status', sortable: true },
-  { key: 'statuses', title: 'Statuses', sortable: false }
-];
+import moment from 'moment';
 
 export const PEOPLE = [
   {
@@ -89,7 +75,7 @@ export const TEST = [
   },
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'test',
@@ -105,19 +91,21 @@ export const TEST = [
 export const COLUMNS = [
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'Language',
-    accessor: 'language'
+    accessor: 'position.name'
   },
   {
     Header: 'Date',
-    accessor: 'date'
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    Header: 'Status',
-    accessor: 'status'
+    Header: 'Checked',
+    accessor: 'checked',
+    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
   }
 ];
 

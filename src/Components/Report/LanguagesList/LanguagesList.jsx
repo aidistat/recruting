@@ -3,6 +3,7 @@ import './languagesList.css';
 
 class LanguagesList extends Component {
     render() {
+        console.log(this.props)
         return (
             <div className="language">
                 <span className="language-position">{this.props.position}  </span>

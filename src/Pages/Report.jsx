@@ -6,7 +6,6 @@ import LanguagesList from "../Components/Report/LanguagesList/LanguagesList"
 import Comments from "../Components/Report/Comments/Comments"
 import DownloadXLSX from "../Components/Report/GenerateXLSX/Downloads"
 import GeneralReport from "../Components/Report/GeneralReport/GeneralReport"
-import Summ from "../Components/Report/Summ/Summ"
 import Error from "../Components/Error/Error"
 import { isLoading, selectData, isError, selectError, isReporting } from "../redux/report/report-selectors";
 
@@ -22,7 +21,6 @@ class Report extends Component {
                     this.props.isReporting ?
                         <React.Fragment>
                             {this.props.isLoading ? 'Loading...' :
-
                                 <React.Fragment>
                                     <Vacncy />
                                     <GeneralReport
@@ -30,9 +28,6 @@ class Report extends Component {
                                     />
                                     <DownloadXLSX
                                         data={this.props.reportData}
-                                    />
-                                    <Summ
-                                        summ={this.props.reportData.sum}
                                     />
                                 </React.Fragment>}
                         </React.Fragment> : <div></div>}

@@ -38,9 +38,11 @@ class CVSources extends Component {
                 <div className="sum">
                     <hr align="center" width="100%" size="2" color="aquamarine" />
                     <div>Суммарно {this.props.summary.count}</div>
-                    <div>{this.props.summary.positionList.map((position) => (
+                    <div>{this.props.summary.positionList.map(({position, count}) => (
                         <LanguagesList key={position.position}
-                            languages={{ languages: position.position, value: position.count }}
+                            key={position}
+                                position={position}
+                                count={count}
                         />
                     ))}</div>
                 </div>

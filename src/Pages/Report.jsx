@@ -32,7 +32,6 @@ class Report extends Component {
 
   setComments = (commentID, comment) => {
     this.setState({ [commentID]: comment })
-    // console.log(this.state)
 
   };
 

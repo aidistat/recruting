@@ -222,7 +222,7 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-export const STATUS = ['Checked', 'Not Checked'];
+export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
   { title: 'Job.kg', path: '/jobkg', component: JobKg },

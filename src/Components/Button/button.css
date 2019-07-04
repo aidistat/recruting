@@ -8,8 +8,17 @@
     font-weight: 600;
     margin-top: 20px;
     cursor: pointer;
+    outline: 0;
 }
 .button:hover {
     background: #018be4;
     color: #fff;
+    box-shadow: 0px 15px 25px -5px #0057ab;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+.button:active {
+    box-shadow: 0px 4px 8px #0065c8;
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './search.css';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 
 class Search extends Component {
   state = {
@@ -26,9 +25,9 @@ class Search extends Component {
           <div className="search-icon">
             <SearchIcon />
           </div>
-          <InputBase
+          <input
             placeholder="Search…"
-            inputProps={{ 'aria-label': 'Search' }}
+            type="text"
             onChange={e => this.doSearch(e)}
           />
         </div>

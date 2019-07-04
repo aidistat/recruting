@@ -98,6 +98,10 @@ export const COLUMNS = [
     accessor: 'position.name'
   },
   {
+    Header: 'Link',
+    accessor: 'link'
+  },
+  {
     Header: 'Date',
     accessor: 'date',
     Cell: ({ value }) => moment(value).format('MM/DD/YYYY')

@@ -5,6 +5,7 @@ import { setUsersAC, setUsersTotalCountAC } from '../../redux/user-reducer';
 import { connect } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import './table.css';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class Table extends Component {
   state = {
@@ -15,10 +16,10 @@ class Table extends Component {
       pageNumber: pageNumber
     });
     const response = await fetch(
-      `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}`
+      `https://localhost:8081/summary?page=${pageNumber}`
     );
     const json = await response.json();
-    this.props.setUsers(json.items);
+    this.props.setUsers(json.content);
   };
   render() {
     let { columns, data } = this.props;
@@ -31,7 +32,7 @@ class Table extends Component {
     });
 
     return (
-      <div>
+      <div className="table-wrapper">
         <ReactTable
           columns={columns}
           data={data}
@@ -39,6 +40,10 @@ class Table extends Component {
           showPagination={false}
         />
         <Pagination
+          firstPageText={<Tooltip title="First" placement="top"><span>&laquo;</span></Tooltip>}
+          prevPageText={<Tooltip title="Prev" placement="top"><span>&lt;</span></Tooltip>}
+          nextPageText={<Tooltip title="Next" placement="top"><span>&gt;</span></Tooltip>}
+          lastPageText={<Tooltip title="Last" placement="top"><span>&raquo;</span></Tooltip>}
           innerClass="pagination"
           itemClassFirst="first"
           itemClassLast="last"

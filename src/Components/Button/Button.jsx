@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Btn from '@material-ui/core/Button';
+import "./button.css";
 
 class Button extends Component {
   render() {
     let { text, onClick } = this.props;
     return (
-      <Btn variant="contained" onClick={onClick} size='small'>
+      <button className="button" onClick={onClick} size='small'>
         {text}
-      </Btn>
+      </button>
     );
   }
 }

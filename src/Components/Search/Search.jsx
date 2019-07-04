@@ -16,7 +16,7 @@ class Search extends Component {
     this.setState({
       typingTimeout: setTimeout(() => {
         this.props.onSearch(e.target.value);
-      }, 1000)
+      }, 0)
     });
   }
   render() {

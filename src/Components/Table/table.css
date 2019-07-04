@@ -27,8 +27,20 @@
 }
 .active a {
   color: #018be4 !important;
+  font-weight: bold;
 }
 .pagination li:hover {
   background: #dddddd;
   cursor: pointer;
+}
+.table-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+span {
+  font-weight: normal;
+  font-size: 20px;
 }

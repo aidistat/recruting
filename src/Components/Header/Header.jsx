@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './header.css';
 import * as Constants from '../../Constants/constants';
+import src from '../../../public/img/logo.png';
 
 class Header extends Component {
     render() {

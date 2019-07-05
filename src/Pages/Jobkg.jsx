@@ -23,7 +23,6 @@ class JobKg extends Component {
   }
 
   componentDidMount() {
-    // this.props.setUsers(Constants.PEOPLE)
     Services.fetchJson(Constants.URL)
       .then(data => this.props.setUsers(data.content));
   }

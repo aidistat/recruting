@@ -12,12 +12,10 @@ class Header extends Component {
                     {Constants.ROUTES.map((route, i) => {
                         return (
                             <li key={i}>
-                                <a href={route.path}>{route.title}</a>
+                                <a target={route.newTab ? "_blank" : "_self"}  href={route.path}>{route.title}</a>
                             </li>
                         );
                     })}
-                    <li><a target="_blank" href="/report">Report</a></li>
-
                 </ul>
             </div>
         );

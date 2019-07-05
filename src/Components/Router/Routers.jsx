@@ -10,7 +10,6 @@ class Routers extends Component {
         {ROUTES.map((route, i) => {
           return <Route key={i} path={route.path} component={route.component} />;
         })}
-        <Route path="/report" component={Report} />;
 
 
 

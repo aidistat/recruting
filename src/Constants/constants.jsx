@@ -4,6 +4,7 @@ import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
 import Whole from '../Pages/Whole';
+import Report from '../Pages/Report'
 
 export const HEADERS = [
   { key: 'name', title: 'Full Name', sortable: true },
@@ -233,8 +234,9 @@ export const TECHNOLOGIES = [
 export const STATUS = ['Checked', 'Not Checked'];
 
 export const ROUTES = [
-  { title: 'Job.kg', path: '/jobkg', component: JobKg },
-  { title: 'HeadHunter', path: '/hh', component: HeadHunter },
-  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio },
-  { title: 'Entire DataBase', path: '/entiredb', component: Whole }
+  { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
+  { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},
+  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
+  { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
+  {title: 'Report', path: '/report', component: Report, newTab: true}
 ];

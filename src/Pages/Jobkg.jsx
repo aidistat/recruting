@@ -5,6 +5,7 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
+import * as Services from '../Services/basicServices'
 
 class JobKg extends Component {
   state = {
@@ -12,17 +13,15 @@ class JobKg extends Component {
   };
 
   async doSearch(value) {
-    let response = null;
     if (!value || value === ' ') {
-      response = await fetch(`http://localhost:8081/summary`);
-      let data = await response.json();
+      let data = await Services.fetchJson(Constants.URL)
       this.props.setUsers(data.content);
     } else {
-      response = await fetch(`http://localhost:8081/summary?fullName=${value}`);
-      let data = await response.json();
+      let data = await Services.fetchJson(`${Constants.URL}?fullName=${value}`);
       this.props.setUsers(data.content);
     }
   }
+
   componentDidMount() {
     // this.props.setUsers(Constants.PEOPLE)
     fetch('http://localhost:8081/summary')

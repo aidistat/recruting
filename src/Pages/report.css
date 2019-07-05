@@ -91,54 +91,48 @@
     align-items: center;
 }
 
-.called:before {
+.called:before,
+.invited:before,
+.pending:before,
+.rejected:before,
+.applied:before,
+.called .diagramLabel:after,
+.invited .diagramLabel:after,
+.pending .diagramLabel:after,
+.rejected .diagramLabel:after,
+.applied .diagramLabel:after
+{
     content: '';
     position: absolute;
     top: 0;
     right: 0;
+    width: 0;
+}
+
+.called:before
+ {
     border-bottom: 50px solid white;
     border-left: 20px solid #82bce0;
-    width: 0;
 }
 
 .invited:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid white;
     border-left: 20px solid #edeb77;
-    width: 0;
 }
 
 .pending:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid white;
     border-left: 20px solid #ffa159;
-    width: 0;
 }
 
 .rejected:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid white;
     border-left: 20px solid #ff5252;
-    width: 0;
 }
 
 .applied:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid white;
     border-left: 20px solid #62f09b;
-    width: 0;
 }
 
 .diagramLabel:before {
@@ -152,53 +146,28 @@
 }
 
 .called .diagramLabel:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid black;
     border-right: 20px solid #82bce0;
-    width: 0;
 }
 
 .invited .diagramLabel:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid black;
     border-right: 20px solid #edeb77;
-    width: 0;
 }
 
 .pending .diagramLabel:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid black;
     border-right: 20px solid #ffa159;
-    width: 0;
 }
 
 .rejected .diagramLabel:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid black;
     border-right: 20px solid #ff5252;
-    width: 0;
 }
 
 .applied .diagramLabel:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     border-bottom: 50px solid black;
     border-right: 20px solid #62f09b;
-    width: 0;
 }
 
 .called {

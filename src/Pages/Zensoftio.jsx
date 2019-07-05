@@ -4,6 +4,7 @@ import Filters from '../Components/Filters/Filters';
 import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
+import Search from '../Components/Search/Search';
 
 class Zensoftio extends Component {
   componentDidMount() {
@@ -13,13 +14,14 @@ class Zensoftio extends Component {
     return (
       <div>
         <Filters />
+        <Search />
         <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>
     );
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -27,7 +29,7 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));

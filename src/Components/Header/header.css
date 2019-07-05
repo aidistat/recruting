@@ -1,5 +1,5 @@
 .header {
-    width: 80%;
+    width: 81%;
     margin: 0 auto 0;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 .logo {
-    font-size: 1.6em;
+    font-size: 2em;
 }
 .nav {
     display: flex;
@@ -28,8 +28,12 @@ a {
     color: #000;
 }
 .nav li:hover {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #018be4;
 }
 img {
-    width: 100px;
+    width: 25px;
+}
+.triangle {
+    color: #018be4;
+    font-size: 1em;
 }

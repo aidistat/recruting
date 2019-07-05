@@ -4,6 +4,7 @@ import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
 import Whole from '../Pages/Whole';
+<<<<<<< HEAD
 import Report from '../Pages/Report'
 
 export const HEADERS = [
@@ -20,6 +21,9 @@ export const HEADER_WITH_STATUSES = [
   { key: 'status', title: 'Status', sortable: true },
   { key: 'statuses', title: 'Statuses', sortable: false }
 ];
+=======
+import moment from 'moment';
+>>>>>>> dev
 
 export const PEOPLE = [
   {
@@ -90,7 +94,7 @@ export const TEST = [
   },
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'test',
@@ -106,19 +110,25 @@ export const TEST = [
 export const COLUMNS = [
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'Language',
-    accessor: 'language'
+    accessor: 'position.name'
+  },
+  {
+    Header: 'Link',
+    accessor: 'link'
   },
   {
     Header: 'Date',
-    accessor: 'date'
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    Header: 'Status',
-    accessor: 'status'
+    Header: 'Checked',
+    accessor: 'checked',
+    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
   }
 ];
 
@@ -231,7 +241,7 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-export const STATUS = ['Checked', 'Not Checked'];
+export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
   { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
@@ -240,3 +250,5 @@ export const ROUTES = [
   { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
   {title: 'Report', path: '/report', component: Report, newTab: true}
 ];
+
+export const URL = "http://localhost:8081/summary?";

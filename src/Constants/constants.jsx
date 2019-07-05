@@ -4,26 +4,7 @@ import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
 import Whole from '../Pages/Whole';
-<<<<<<< HEAD
-import Report from '../Pages/Report'
-
-export const HEADERS = [
-  { key: 'name', title: 'Full Name', sortable: true },
-  { key: 'language', title: 'Language', sortable: true },
-  { key: 'date', title: 'Date', sortable: true },
-  { key: 'status', title: 'Status', sortable: true }
-];
-
-export const HEADER_WITH_STATUSES = [
-  { key: 'name', title: 'Full Name', sortable: true },
-  { key: 'language', title: 'Language', sortable: true },
-  { key: 'date', title: 'Date', sortable: true },
-  { key: 'status', title: 'Status', sortable: true },
-  { key: 'statuses', title: 'Statuses', sortable: false }
-];
-=======
 import moment from 'moment';
->>>>>>> dev
 
 export const PEOPLE = [
   {

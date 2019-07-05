@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     let { text, onClick } = this.props;
     return (
-      <button className="button" onClick={onClick} size='small'>
+      <button className="button" onClick={onClick} size="small">
         {text}
       </button>
     );

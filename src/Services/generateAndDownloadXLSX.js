@@ -17,7 +17,7 @@ function createBuff(wb) {
 
 function generateWB(dates) {
   let wb = XLSX.utils.book_new();
-  // wb.Props = {}
+  wb.Props = {};
   wb.SheetNames.push('Report');
 
   let ws = XLSX.utils.json_to_sheet(dates, {
@@ -30,48 +30,76 @@ function generateWB(dates) {
 }
 
 function generateArray({ data, comments }) {
-    const STATUSES = [
-        'CALLED',
-        'INVITED',
-        'PENDING',
-        'REJECTED',
-        'APPLIED',
-    ];
-    function a(){}
+
   let resultArray = [
-    { A: 'Период:', B: `${512} - ${52}` },
+    { A: 'Период:', B: `${data.dates.start} - ${data.dates.end}` }, // 'A' && 'B' ...  -  colunm in .xlsx file
     {},
     { A: 'Вакансии:' }
   ];
 
   const vacancyArray = comments.vacancy.split('\n');
-  vacancyArray.map(
-    vacancy => (resultArray = resultArray.concat({ A: vacancy }))
+  vacancyArray.map(vacancy => (resultArray = [...resultArray, { A: vacancy }]));
+  resultArray = [...resultArray, {}];
+  resultArray = [
+    ...resultArray,
+    {
+      A: `Принято и просмотрено резюме (job.kg + HH.kg + корпоративная почта).`,
+      B: data.sum.count
+    }
+  ];
+
+  resultArray = [...resultArray, {}];
+
+  data.sum.positionList.map(
+    position =>
+      (resultArray = [
+        ...resultArray,
+        {
+          A: position.position,
+          B: position.count
+        }
+      ])
   );
-  resultArray = resultArray.concat({});
-  resultArray = resultArray.concat({
-    A: `Принято и просмотрено резюме (job.kg + HH.kg + корпоративная почта).`,
-    B: data.sum.count
+
+  data.sourcesList.map(sourse => {
+    resultArray = [
+      ...resultArray,
+      {
+        D: sourse.source,
+        E: 'Откликнулось',
+        F: sourse.count
+      }
+    ];
+    sourse.positionList.map(
+      position =>
+        (resultArray = [
+          ...resultArray,
+          {
+            E: position.position,
+            F: position.count
+          }
+        ])
+    );
+    resultArray = [...resultArray, {}];
+    return 0;
   });
-  data.sum.positionList.map((position) => (resultArray = resultArray.concat({
-      A: position.position, B: position.count}))) 
 
-data.sourcesList.map((sourse) => {
-    resultArray = resultArray.concat({D: sourse.source, E: 'Откликнулось', F: sourse.count})
-    sourse.positionList.map((position) =>(
-        resultArray = resultArray.concat({E: position.position, F: position.count})
-    ))
-  })
-
-  resultArray = resultArray.concat({});
-
-  data.statusesList.map((status) => {
-      resultArray = resultArray.concat({A: comments[status.status]} )
-      resultArray = resultArray.concat({A: status.status})
-      status.positionList.map((position) =>{
-          resultArray = resultArray.concat({A: position.position, B: position.count})
-      })
-  })
+  data.statusesList.map(status => {
+    resultArray = [...resultArray, {}];
+    resultArray = [...resultArray, { A: comments[status.status] }];
+    resultArray = [...resultArray, { A: status.status }];
+    status.positionList.map(position => {
+      resultArray = [
+        ...resultArray,
+        {
+          A: position.position,
+          B: position.count
+        }
+      ];
+      return 0;
+    });
+    return 0;
+  });
 
   return resultArray;
 }

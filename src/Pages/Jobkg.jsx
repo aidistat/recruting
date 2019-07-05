@@ -4,26 +4,41 @@ import Table from '../Components/Table/Table';
 import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
+import Search from '../Components/Search/Search';
+import * as Services from '../Services/basicServices';
 
 class JobKg extends Component {
+  state = {
+
+  };
+
+  async doSearch(value) {
+    if (!value || value === ' ') {
+      let data = await Services.fetchJson(Constants.URL);
+      this.props.setUsers(data.content);
+    } else {
+      let data = await Services.fetchJson(`${Constants.URL}fullName=${value}`);
+      this.props.setUsers(data.content);
+    }
+  }
+
   componentDidMount() {
-    // this.props.setUsers(Constants.PEOPLE)
-    fetch('https://social-network.samuraijs.com/api/1.0/users?page=1')
-      .then(response => response.json())
-      .then(data => this.props.setUsers(data.items));
+    Services.fetchJson(Constants.URL)
+      .then(data => this.props.setUsers(data.content));
   }
 
   render() {
     return (
       <div>
         <Filters />
-        <Table columns={Constants.TEST} data={this.props.users} />
+        <Search onSearch={value => this.doSearch(value)} />
+        <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>
     );
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -31,7 +46,7 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));

@@ -98,6 +98,10 @@ export const COLUMNS = [
     accessor: 'position.name'
   },
   {
+    Header: 'Link',
+    accessor: 'link'
+  },
+  {
     Header: 'Date',
     accessor: 'date',
     Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
@@ -218,7 +222,7 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-export const STATUS = ['Checked', 'Not Checked'];
+export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
   { title: 'Job.kg', path: '/jobkg', component: JobKg },
@@ -227,4 +231,4 @@ export const ROUTES = [
   { title: 'Entire DataBase', path: '/entiredb', component: Whole }
 ];
 
-export const URL = "http://localhost:8081/summary";
+export const URL = "http://localhost:8081/summary?";

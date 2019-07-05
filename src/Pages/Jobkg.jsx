@@ -5,27 +5,26 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
-import * as Services from '../Services/basicServices'
+import * as Services from '../Services/basicServices';
 
 class JobKg extends Component {
   state = {
-    searchResults: []
+
   };
 
   async doSearch(value) {
     if (!value || value === ' ') {
-      let data = await Services.fetchJson(Constants.URL)
+      let data = await Services.fetchJson(Constants.URL);
       this.props.setUsers(data.content);
     } else {
-      let data = await Services.fetchJson(`${Constants.URL}?fullName=${value}`);
+      let data = await Services.fetchJson(`${Constants.URL}fullName=${value}`);
       this.props.setUsers(data.content);
     }
   }
 
   componentDidMount() {
     // this.props.setUsers(Constants.PEOPLE)
-    fetch('http://localhost:8081/summary')
-      .then(response => response.json())
+    Services.fetchJson(Constants.URL)
       .then(data => this.props.setUsers(data.content));
   }
 
@@ -40,7 +39,7 @@ class JobKg extends Component {
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -48,7 +47,7 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));

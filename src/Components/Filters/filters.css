@@ -6,3 +6,9 @@
     align-items: center;
     padding: 10px 80px;
 }
+.profile {
+    color: #018be4;
+}
+.MuiFormControl-root select {
+    width: 120px;
+}

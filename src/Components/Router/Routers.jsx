@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ROUTES } from '../../Constants/constants';
-import Report from '../../Pages/Report'
 
 class Routers extends Component {
   render() {

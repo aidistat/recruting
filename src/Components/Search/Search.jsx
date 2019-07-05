@@ -18,6 +18,7 @@ class Search extends Component {
       }, 0)
     });
   }
+
   render() {
     return (
       <div className="search">

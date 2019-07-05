@@ -6,31 +6,26 @@ import { connect } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import './table.css';
 import Tooltip from '@material-ui/core/Tooltip';
+import * as Services from '../../Services/basicServices';
+import * as Constants from '../../Constants/constants';
 
 class Table extends Component {
   state = {
     pageNumber: 1
   };
+
   pageChanged = async pageNumber => {
     this.setState({
       pageNumber: pageNumber
     });
-    const response = await fetch(
-      `https://localhost:8081/summary?page=${pageNumber}`
+    const data = await Services.fetchJson(
+      `${Constants.URL}page=${pageNumber - 1}`
     );
-    const json = await response.json();
-    this.props.setUsers(json.content);
+    this.props.setUsers(data.content);
   };
+
   render() {
     let { columns, data } = this.props;
-
-    data = data.map(item => {
-      return {
-        ...item,
-        test: <button onClick={() => console.log(item)}>test</button>
-      };
-    });
-
     return (
       <div className="table-wrapper">
         <ReactTable
@@ -40,10 +35,26 @@ class Table extends Component {
           showPagination={false}
         />
         <Pagination
-          firstPageText={<Tooltip title="First" placement="top"><span>&laquo;</span></Tooltip>}
-          prevPageText={<Tooltip title="Prev" placement="top"><span>&lt;</span></Tooltip>}
-          nextPageText={<Tooltip title="Next" placement="top"><span>&gt;</span></Tooltip>}
-          lastPageText={<Tooltip title="Last" placement="top"><span>&raquo;</span></Tooltip>}
+          firstPageText={
+            <Tooltip title="First" placement="top">
+              <span>&laquo;</span>
+            </Tooltip>
+          }
+          prevPageText={
+            <Tooltip title="Prev" placement="top">
+              <span>&lt;</span>
+            </Tooltip>
+          }
+          nextPageText={
+            <Tooltip title="Next" placement="top">
+              <span>&gt;</span>
+            </Tooltip>
+          }
+          lastPageText={
+            <Tooltip title="Last" placement="top">
+              <span>&raquo;</span>
+            </Tooltip>
+          }
           innerClass="pagination"
           itemClassFirst="first"
           itemClassLast="last"
@@ -58,7 +69,7 @@ class Table extends Component {
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -66,7 +77,7 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));

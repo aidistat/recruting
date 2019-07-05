@@ -4,7 +4,6 @@ import * as Constants from '../../Constants/constants';
 
 class Header extends Component {
   render() {
-      console.log(window.location);
     return (
       <div className="header">
         <div className="logo-icon">

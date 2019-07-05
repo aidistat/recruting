@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import * as Constants from '../../Constants/constants';
 import { setUsersAC } from '../../redux/user-reducer';
 import { connect } from 'react-redux';
+import * as Services from '../../Services/basicServices';
 
 class Filters extends Component {
   state = {
@@ -18,16 +19,15 @@ class Filters extends Component {
     });
   };
 
-  applyFilters = () => {
-      let url = "http://localhost:8081/summary?"
-      const keys = Object.keys(this.state)
-      keys.map((item, i) => {
-          url = url + keys[i] + '=' + this.state[keys[i]] + "&";
-      })
-      fetch(url)
-          .then(response => response.json())
-          .then(data => this.props.setUsers(data.content))
-  }
+  applyFilters = async () => {
+    let url = Constants.URL;
+    const keys = Object.keys(this.state);
+    keys.map((item, i) => {
+      url = url + keys[i] + '=' + this.state[keys[i]] + '&';
+    });
+    let data = await Services.fetchJson(url);
+    this.props.setUsers(data.content);
+  };
 
   render() {
     return (
@@ -64,19 +64,19 @@ class Filters extends Component {
             title="Checked"
           />
         </div>
-        <Button text="Apply" onClick={this.applyFilters}/>
+        <Button text="Apply" onClick={this.applyFilters} />
       </div>
     );
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     users: state.usersPage.users
   };
 };
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));

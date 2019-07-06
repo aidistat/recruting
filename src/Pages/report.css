@@ -1,0 +1,227 @@
+.detail {
+    display: flex;
+}
+
+.statusRow {
+    width: 100%;
+    display: flex;
+}
+
+.diagramRow {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.detailRow {
+    display: flex;
+    align-items: center;
+}
+
+.detailRowPosition {
+    margin-left: 10px;
+}
+
+.detailRowComment {
+    margin-left: 10px;
+}
+
+/*LanguageList*/
+.positions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 200px;
+}
+
+.language-position {
+    left: 0;
+    margin-right: 10px;
+}
+
+.language-count {
+    right: 0;
+    float: right;
+}
+
+.language {
+    text-align: left;
+}
+
+/*Sources*/
+
+.source {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sourceTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sourceLogo {
+    margin-right: 10px;
+}
+
+/*Commment*/
+
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
+/*Vacancy*/
+.vacancy {
+    text-align: left;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Diagram*/
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.called:before,
+.invited:before,
+.pending:before,
+.rejected:before,
+.applied:before,
+.called .diagramLabel:after,
+.invited .diagramLabel:after,
+.pending .diagramLabel:after,
+.rejected .diagramLabel:after,
+.applied .diagramLabel:after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+}
+
+.called:before
+ {
+    border-bottom: 50px solid white;
+    border-left: 20px solid #82bce0;
+}
+
+.invited:before {
+    border-bottom: 50px solid white;
+    border-left: 20px solid #edeb77;
+}
+
+.pending:before {
+    border-bottom: 50px solid white;
+    border-left: 20px solid #ffa159;
+}
+
+.rejected:before {
+    border-bottom: 50px solid white;
+    border-left: 20px solid #ff5252;
+}
+
+.applied:before {
+    border-bottom: 50px solid white;
+    border-left: 20px solid #62f09b;
+}
+
+.diagramLabel:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 50px solid white;
+    border-right: 20px solid black;
+    width: 0;
+}
+
+.called .diagramLabel:after {
+    border-bottom: 50px solid black;
+    border-right: 20px solid #82bce0;
+}
+
+.invited .diagramLabel:after {
+    border-bottom: 50px solid black;
+    border-right: 20px solid #edeb77;
+}
+
+.pending .diagramLabel:after {
+    border-bottom: 50px solid black;
+    border-right: 20px solid #ffa159;
+}
+
+.rejected .diagramLabel:after {
+    border-bottom: 50px solid black;
+    border-right: 20px solid #ff5252;
+}
+
+.applied .diagramLabel:after {
+    border-bottom: 50px solid black;
+    border-right: 20px solid #62f09b;
+}
+
+.called {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #82bce0;
+}
+
+.invited {
+    position: relative;
+    width: 90%;
+    height: 50px;
+    background: #edeb77;
+}
+
+.pending {
+    position: relative;
+    width: 80%;
+    height: 50px;
+    background: #ffa159;
+}
+
+.rejected {
+    position: relative;
+    width: 70%;
+    height: 50px;
+    background: #ff5252;
+}
+
+.applied {
+    position: relative;
+    width: 62%;
+    height: 50px;
+    background: #62f09b;
+}
+
+.diagramLabel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2rem;
+    float: left;
+    text-align: center;
+    height: 100%;
+    width: 200px;
+    background: #000;
+    color: #fff;
+}
+
+.diagramValue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

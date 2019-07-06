@@ -1,0 +1,26 @@
+.arrow {
+    position: relative;
+    width: 70px;
+    height: 20px;
+}
+
+.arrow-edge {
+    position: absolute;
+    right: 2px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg);
+}
+
+.arrow-body {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    border: solid black;
+    border-width: 2px 0 0 0;
+    display: inline-block;
+    width: 100%;
+}

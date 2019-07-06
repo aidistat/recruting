@@ -225,10 +225,11 @@ export const TECHNOLOGIES = [
 export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
-  { title: 'Job.kg', path: '/jobkg', component: JobKg },
-  { title: 'HeadHunter', path: '/hh', component: HeadHunter },
-  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio },
-  { title: 'Entire DataBase', path: '/entiredb', component: Whole }
+  { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
+  { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},
+  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
+  { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
+  {title: 'Report', path: '/report', component: Report, newTab: true}
 ];
 
 export const URL = "http://localhost:8081/summary?";

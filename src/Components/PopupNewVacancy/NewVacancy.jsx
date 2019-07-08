@@ -97,8 +97,10 @@ export default class AlertDialog extends Component {
             margin='normal'
             onChange={e => this.vacancy(e)}
           />
-          <Button text='ADD' onClick={() => this.addVacancy()} />
-          <Button text='Cancel' onClick={this.handleClose} />
+          <div className="buttons">
+            <Button text='ADD' onClick={() => this.addVacancy()} />
+            <Button text='Cancel' onClick={this.handleClose} />
+          </div>
         </Dialog>
       </div>
     );

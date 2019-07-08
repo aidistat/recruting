@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from '../Components/Select/Select';
 import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';

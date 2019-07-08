@@ -235,7 +235,6 @@ export const ROUTES = [
   { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
   { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
   {title: 'Report', path: '/report', component: Report, newTab: true},
-
 ];
 
 export const URL = "http://localhost:8081/summary?";

@@ -9,12 +9,16 @@ import * as Constants from '../../Constants/constants';
 export default class AlertDialog extends Component {
   state = {
     open: false,
-      position: ''
+    position: ''
   };
+
   addVacancy = () => {
-    let response = Services.fetchJsonPost(Constants.URL_POSITION, JSON.stringify({name: this.state.position}));
-    console.log(response)
+    let response = Services.fetchJsonPost(
+      Constants.URL_POSITION,
+      JSON.stringify({ name: this.state.position })
+    );
   };
+
   handleClickOpen = () => {
     this.setState({
       open: true
@@ -24,11 +28,13 @@ export default class AlertDialog extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-  vacancy = (e) => {
-      this.setState({
-          position: e.target.value
-      })
-  }
+
+  vacancy = e => {
+    this.setState({
+      position: e.target.value
+    });
+  };
+  
   render() {
     return (
       <div>
@@ -46,7 +52,12 @@ export default class AlertDialog extends Component {
           aria-describedby="alert-dialog-description"
         >
           <h1>Add new vacancy</h1>
-          <TextField id="standard-name" label="Name" margin="normal" onChange={(e) => this.vacancy(e)} />
+          <TextField
+            id="standard-name"
+            label="Name"
+            margin="normal"
+            onChange={e => this.vacancy(e)}
+          />
           <Button text="ADD" onClick={this.addVacancy} />
           <Button text="Cancel" onClick={this.handleClose} />
         </Dialog>

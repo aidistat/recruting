@@ -3,11 +3,13 @@ export const fetchJson = async url => {
   return await response.json();
 };
 
-export const fetchJsonPost = async url => {
+export const fetchJsonPost = async (url, body) => {
   const response = await fetch(url, {
-    body: {},
+    body: body,
     method: 'POST',
-    headers: {}
+    headers: {
+      'Content-Type': 'application/json',
+    }
   });
   return await response.json();
 };

@@ -1,5 +1,4 @@
 .button {
-    width: 100px;
     height: 30px;
     border: 1px solid #018be4;
     background: #fff;
@@ -9,6 +8,7 @@
     margin-top: 20px;
     cursor: pointer;
     outline: 0;
+    padding: 5px 20px;
 }
 .button:hover {
     background: #018be4;

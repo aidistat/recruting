@@ -3,8 +3,11 @@ import Select from '../Components/Select/Select';
 import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
+import Recommended from '../Pages/Recommended';
+import Social from '../Pages/Social';
 import Whole from '../Pages/Whole';
 import moment from 'moment';
+import Report from "../Pages/Report";
 
 export const PEOPLE = [
   {
@@ -225,11 +228,16 @@ export const TECHNOLOGIES = [
 export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
+  {title: 'Recommended', path: '/recommended', component: Recommended, newTab: false},
+  {title: 'Social', path: '/social', component: Social, newTab: false},
   { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
   { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},
   { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
   { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
-  {title: 'Report', path: '/report', component: Report, newTab: true}
+  {title: 'Report', path: '/report', component: Report, newTab: true},
+
 ];
 
 export const URL = "http://localhost:8081/summary?";
+
+export const URL_POSITION = "http://localhost:8081/position";

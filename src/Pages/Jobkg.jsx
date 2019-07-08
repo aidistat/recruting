@@ -6,6 +6,7 @@ import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import * as Services from '../Services/basicServices';
+import AlertDialog from "../Components/PopupNewVacancy/NewVacancy";
 
 class JobKg extends Component {
   state = {
@@ -33,6 +34,7 @@ class JobKg extends Component {
         <Filters />
         <Search onSearch={value => this.doSearch(value)} />
         <Table columns={Constants.COLUMNS} data={this.props.users} />
+        <AlertDialog />
       </div>
     );
   }

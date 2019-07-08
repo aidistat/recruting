@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'react-table/react-table.css';
+import '../../react-table.css';
 import ReactTable from 'react-table';
 import { setUsersAC, setUsersTotalCountAC } from '../../redux/user-reducer';
 import { connect } from 'react-redux';

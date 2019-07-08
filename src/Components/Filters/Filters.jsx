@@ -24,6 +24,7 @@ class Filters extends Component {
     const keys = Object.keys(this.state);
     keys.map((item, i) => {
       url = url + keys[i] + '=' + this.state[keys[i]] + '&';
+      return url;
     });
     let data = await Services.fetchJson(url);
     this.props.setUsers(data.content);

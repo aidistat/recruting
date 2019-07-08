@@ -14,7 +14,9 @@ class Whole extends Component {
     return (
       <div>
         <Filters />
-        <Search />
+        <div className="func">
+          <Search />
+        </div>
         <Table
           columns={Constants.COLUMNS_WITH_STATUSES}
           data={this.props.users}

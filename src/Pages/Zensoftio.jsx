@@ -5,11 +5,16 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
+import * as Services from "../Services/basicServices";
 
 class Zensoftio extends Component {
+
   componentDidMount() {
-    this.props.setUsers(Constants.PEOPLE);
+    Services.fetchJson(Constants.URL).then(data =>
+        this.props.setUsers(data.content)
+    );
   }
+
   render() {
     return (
       <div>

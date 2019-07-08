@@ -34,7 +34,6 @@ class JobKg extends Component {
         <Filters />
         <Search onSearch={value => this.doSearch(value)} />
         <Table columns={Constants.COLUMNS} data={this.props.users} />
-        <AlertDialog />
       </div>
     );
   }

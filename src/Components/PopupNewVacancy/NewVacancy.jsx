@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import './newVacancy.css';
 import * as Services from '../../Services/basicServices';
 import * as Constants from '../../Constants/constants';
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 export default class AlertDialog extends Component {
   state = {
@@ -21,13 +21,13 @@ export default class AlertDialog extends Component {
 
   addNotificationError = () => {
     this.notificationDOMRef.current.addNotification({
-      title: " Error ",
+      title: ' Error ',
       message: 'Vacancy was not added!',
-      type: "danger",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
       dismiss: { duration: 2000 },
       dismissable: { click: true }
     });
@@ -35,13 +35,13 @@ export default class AlertDialog extends Component {
 
   addNotificationSuccess = () => {
     this.notificationDOMRef.current.addNotification({
-      title: " Success ",
+      title: ' Success ',
       message: 'Vacancy was added successfully!',
-      type: "success",
-      insert: "top",
+      type: 'success',
+      insert: 'top',
       container: "top-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
       dismiss: { duration: 2000 },
       dismissable: { click: true }
     });
@@ -79,28 +79,26 @@ export default class AlertDialog extends Component {
     return (
       <div>
         <Button
-          variant="outlined"
-          color="primary"
           onClick={this.handleClickOpen}
-          text="Add new vacancy"
+          text='Add new vacancy'
         />
         <Dialog
-          className="popup"
+          className='popup'
           open={this.state.open}
           onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+          aria-labelledby='alert-dialog-title'
+          aria-describedby='alert-dialog-description'
         >
           <ReactNotification ref={this.notificationDOMRef} />
           <h1>Add new vacancy</h1>
           <TextField
-            id="standard-name"
-            label="Name"
-            margin="normal"
+            id='standard-name'
+            label='Name'
+            margin='normal'
             onChange={e => this.vacancy(e)}
           />
-          <Button text="ADD" onClick={() => this.addVacancy()} />
-          <Button text="Cancel" onClick={this.handleClose} />
+          <Button text='ADD' onClick={() => this.addVacancy()} />
+          <Button text='Cancel' onClick={this.handleClose} />
         </Dialog>
       </div>
     );

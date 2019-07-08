@@ -33,8 +33,7 @@ class Recommended extends Component {
             <div>
                 <Filters />
                 <Search onSearch={value => this.doSearch(value)} />
-                <Table columns={Constants.COLUMNS} data={this.props.users} />
-                <AlertDialog />
+                <Table columns={Constants.COLUMNS_FOR_RECOMMENDED} data={this.props.users} />
             </div>
         );
     }

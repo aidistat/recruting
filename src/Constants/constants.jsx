@@ -116,103 +116,76 @@ export const COLUMNS = [
   }
 ];
 
-export const STATUSES = ['Pending', 'Applied', 'Rejected', 'Interview'];
-
-export const COLUMNS_WITH_STATUSES = [
+export const COLUMNS_WHOLEDB = [
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'Language',
-    accessor: 'language'
+    accessor: 'position.name'
+  },
+  {
+    Header: 'Link',
+    accessor: 'link'
   },
   {
     Header: 'Date',
-    accessor: 'date'
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
+  },
+  {
+    Header: 'Checked',
+    accessor: 'checked',
+    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
   },
   {
     Header: 'Status',
     accessor: 'status'
-  },
-  {
-    Header: 'Statuses',
-    Cell: props => {
-      return <Select options={STATUSES} />;
-    }
   }
 ];
 
-export const ALL_PEOPLE = [
+export const COLUMNS_FOR_RECOMMENDED = [
   {
-    name: 'John',
-    language: 'Python',
-    date: '06/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Name',
+    accessor: 'fullName'
   },
   {
-    name: 'Jack',
-    language: 'Python',
-    date: '05/11/2019',
-    status: 'Not Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Language',
+    accessor: 'position.name'
   },
   {
-    name: 'Jeremy',
-    language: 'Java',
-    date: '04/22/2019',
-    status: 'Not Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'From',
+    accessor: 'from'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Date',
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Link',
+    accessor: 'link',
+  }
+];
+
+export const COLUMNS_FOR_SOCIAL = [
+  {
+    Header: 'Name',
+    accessor: 'fullName'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Language',
+    accessor: 'position.name'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Date',
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Link',
+    accessor: 'link',
   }
 ];
 

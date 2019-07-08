@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import './newVacancy.css';
 import * as Services from '../../Services/basicServices';
 import * as Constants from '../../Constants/constants';
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 export default class AlertDialog extends Component {
   state = {
@@ -12,12 +14,50 @@ export default class AlertDialog extends Component {
     position: ''
   };
 
-  addVacancy = () => {
-    let response = Services.fetchJsonPost(
-      Constants.URL_POSITION,
-      JSON.stringify({ name: this.state.position })
-    );
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
+  addNotificationError = () => {
+    this.notificationDOMRef.current.addNotification({
+      title: " Error ",
+      message: 'Vacancy was not added!',
+      type: "danger",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
   };
+
+  addNotificationSuccess = () => {
+    this.notificationDOMRef.current.addNotification({
+      title: " Success ",
+      message: 'Vacancy was added successfully!',
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  };
+
+  addVacancy = async () => {
+      let response = await Services.fetchJsonPost(
+          Constants.URL_POSITION, JSON.stringify({name: this.state.position})
+      );
+      if(response.status === 200) {
+        this.addNotificationSuccess();
+      } else {
+        this.addNotificationError();
+      }
+    };
+
 
   handleClickOpen = () => {
     this.setState({
@@ -34,7 +74,7 @@ export default class AlertDialog extends Component {
       position: e.target.value
     });
   };
-  
+
   render() {
     return (
       <div>
@@ -51,6 +91,7 @@ export default class AlertDialog extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          <ReactNotification ref={this.notificationDOMRef} />
           <h1>Add new vacancy</h1>
           <TextField
             id="standard-name"
@@ -58,7 +99,7 @@ export default class AlertDialog extends Component {
             margin="normal"
             onChange={e => this.vacancy(e)}
           />
-          <Button text="ADD" onClick={this.addVacancy} />
+          <Button text="ADD" onClick={() => this.addVacancy()} />
           <Button text="Cancel" onClick={this.handleClose} />
         </Dialog>
       </div>

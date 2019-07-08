@@ -11,5 +11,5 @@ export const fetchJsonPost = async (url, body) => {
       'Content-Type': 'application/json',
     }
   });
-  return await response.json();
+  return await response;
 };

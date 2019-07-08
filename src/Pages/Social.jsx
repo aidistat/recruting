@@ -6,12 +6,8 @@ import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import * as Services from '../Services/basicServices';
-import AlertDialog from "../Components/PopupNewVacancy/NewVacancy";
 
 class Social extends Component {
-    state = {
-
-    };
 
     async doSearch(value) {
         if (!value || value === ' ') {

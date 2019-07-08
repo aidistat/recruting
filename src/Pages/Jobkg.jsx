@@ -9,9 +9,6 @@ import * as Services from '../Services/basicServices';
 import AlertDialog from "../Components/PopupNewVacancy/NewVacancy";
 
 class JobKg extends Component {
-  state = {
-
-  };
 
   async doSearch(value) {
     if (!value || value === ' ') {

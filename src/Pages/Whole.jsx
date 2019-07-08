@@ -5,18 +5,27 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
+import AlertDialog from '../Components/PopupNewVacancy/NewVacancy';
+import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
+
   componentDidMount() {
-    this.props.setUsers(Constants.PEOPLE);
+    Services.fetchJson(Constants.URL).then(data =>
+      this.props.setUsers(data.content)
+    );
   }
+
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Filters />
-        <Search />
+        <div className="func">
+          <Search />
+          <AlertDialog />
+        </div>
         <Table
-          columns={Constants.COLUMNS_WITH_STATUSES}
+          columns={Constants.COLUMNS_WHOLEDB}
           data={this.props.users}
         />
       </div>

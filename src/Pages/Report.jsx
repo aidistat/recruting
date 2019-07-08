@@ -79,7 +79,7 @@ class Report extends Component {
                   <Grid item xs={12}>
                     <DownloadXLSX 
                         data={this.props.reportData}
-                        comments = {this.state}
+                        comments={this.state}
                         
                     />
                   </Grid>

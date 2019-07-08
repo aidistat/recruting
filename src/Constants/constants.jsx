@@ -5,6 +5,7 @@ import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
 import Whole from '../Pages/Whole';
 import moment from 'moment';
+import Report from '../Pages/Report';
 
 export const PEOPLE = [
   {
@@ -222,6 +223,8 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
+export const TECHNOLOGIES_FOR_ADD = ['Recomented', 'NetWork'];
+
 export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
@@ -232,4 +235,6 @@ export const ROUTES = [
   {title: 'Report', path: '/report', component: Report, newTab: true}
 ];
 
-export const URL = "http://localhost:8081/summary?";
+export const URL = "http://172.16.0.30:8081/summary";
+
+export const SOURSE = {Recomented: 3, netWork: 4}

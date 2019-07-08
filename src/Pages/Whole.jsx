@@ -5,7 +5,7 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
-
+import PupopNewCV from '../Components/PupopNewCV/PupopNewCV';
 class Whole extends Component {
   componentDidMount() {
     this.props.setUsers(Constants.PEOPLE);
@@ -14,7 +14,10 @@ class Whole extends Component {
     return (
       <div>
         <Filters />
-        <Search />
+        <div className="func">
+          <Search />
+          <PupopNewCV />
+        </div>
         <Table
           columns={Constants.COLUMNS_WITH_STATUSES}
           data={this.props.users}

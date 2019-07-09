@@ -35,7 +35,7 @@ class PupopNewCV extends Component {
   };
 
   updateUsers = () => {
-    Services.fetchJson(Constants.URL + `?page=1`).then(data =>
+    Services.fetchJson(Constants.URL + `?page=1`).then(data =>//TODO page=1 need to finish
       this.props.setUsers(data.content)
     );
   };
@@ -55,7 +55,7 @@ class PupopNewCV extends Component {
     };
     const data = JSON.stringify(resultObject);
     Services.fetchJsonPost(Constants.URL, data)
-      .then(message => this.handleClose())
+      .then(response => this.handleClose())
       .then(this.updateUsers())
       .then(
         this.setState({
@@ -90,7 +90,7 @@ class PupopNewCV extends Component {
         >
           <DialogTitle id="form-dialog-title">Add new CV</DialogTitle>
           <DialogContent>
-            {this.state.error ? <Error error={this.state.error} /> : <div />}
+            {this.state.error ? <Error error={'this.state.error'} /> : <div />}
             <Select
               autoFocus
               required={true}

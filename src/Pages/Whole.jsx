@@ -5,7 +5,8 @@ import * as Constants from '../Constants/constants';
 import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
-import PupopNewCV from '../Components/PopupNewVacancy/NewVacancy';
+import NewVacancy from '../Components/PopupNewVacancy/NewVacancy';
+import PupopNewCV from '../Components/PupopNewCV/PupopNewCV'
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
@@ -23,6 +24,7 @@ class Whole extends Component {
         <div className="func">
           <Search />
           <PupopNewCV />
+          <NewVacancy />
         </div>
         <Table
           columns={Constants.COLUMNS_WHOLEDB}

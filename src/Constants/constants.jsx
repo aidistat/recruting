@@ -212,8 +212,8 @@ export const ROUTES = [
 
 export const URL = "http://172.16.0.30:8081/summary";
 
-export const SOURSE = {Recomented: 3, NetWork: 4}
-export const TECHNOLOGIES_FOR_ADD = ['Recomented', 'NetWork'];
+export const SOURCE = {Recommended: 3, NetWork: 4}
+export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];
 
 export const POSITIONS = {
   'JavaScript': 1,

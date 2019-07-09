@@ -14,8 +14,8 @@ import { connect } from 'react-redux';
 
 import { setUsersAC } from '../../redux/user-reducer';
 
-class PupopNewCV extends Component {
-  setThisState = (changeID, change) => {
+class PopupNewCV extends Component {
+  setValueInState = (changeID, change) => {
     this.setState({ [changeID]: change });
     this.setButtonPermissions();
   };
@@ -26,10 +26,8 @@ class PupopNewCV extends Component {
   };
 
   setButtonPermissions = () => {
-    this.state.sourse &&
-    this.state.Name &&
-    this.state.position &&
-    this.state.URL
+    const { source, Name, position, URL } = this.state;
+    source && Name && position && URL
       ? this.setState({ disabledAdd: false })
       : this.setState({ disabledAdd: true });
   };
@@ -41,16 +39,17 @@ class PupopNewCV extends Component {
   };
 
   addCV = () => {
+    const { source, Name, position, URL } = this.state;
     const resultObject = {
-      fullName: this.state.Name,
+      fullName: Name,
       date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
-      source: Constants.SOURSE[this.state.sourse],
+      source: Constants.SOURCE[source],
       statuses: '',
       subject: '',
       checked: true,
       position: {
-        name: this.state.position,
-        id: Constants.POSITIONS[this.state.position]
+        name: position,
+        id: Constants.POSITIONS[position]
       }
     };
     const data = JSON.stringify(resultObject);
@@ -82,30 +81,32 @@ class PupopNewCV extends Component {
   };
 
   render() {
-    const sourse = Constants.TECHNOLOGIES_FOR_ADD;
+    const { open, source, error, disabledAdd } = this.state;
+
+    const sourceOptions = Constants.TECHNOLOGIES_FOR_ADD;
     return (
       <div>
         <Button text={'add new CV'} onClick={this.handleClickOpen} />
         <Dialog
           className="popup"
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="form-dialog-title">Add new CV</DialogTitle>
           <DialogContent>
-            {this.state.error ? <Error error={this.state.error} /> : <div />}
+            {error ? <Error error={error} /> : <div />}
             <Select
               autoFocus
               required={true}
               onChange={event =>
-                this.setThisState('sourse', event.target.value)
+                this.setValueInState('source', event.target.value)
               }
-              options={sourse}
-              title={'Sourse'}
+              options={sourceOptions}
+              title={'Source'}
             />
-            {this.state.sourse === 'Recomented' ? (
+            {source === 'Recommended' && (
               <TextField
                 margin="dense"
                 id="name"
@@ -113,11 +114,9 @@ class PupopNewCV extends Component {
                 type="text"
                 fullWidth
                 onChange={event =>
-                  this.setThisState('From', event.target.value)
+                  this.setValueInState('From', event.target.value)
                 }
               />
-            ) : (
-              <div />
             )}
             <TextField
               margin="dense"
@@ -125,11 +124,13 @@ class PupopNewCV extends Component {
               label="Name"
               type="text"
               fullWidth
-              onChange={event => this.setThisState('Name', event.target.value)}
+              onChange={event =>
+                this.setValueInState('Name', event.target.value)
+              }
             />
             <Select
               onChange={event =>
-                this.setThisState('position', event.target.value)
+                this.setValueInState('position', event.target.value)
               }
               options={Constants.TECHNOLOGIES}
               title={'Position'}
@@ -140,13 +141,15 @@ class PupopNewCV extends Component {
               label="URL to Document"
               type="text"
               fullWidth
-              onChange={event => this.setThisState('URL', event.target.value)}
+              onChange={event =>
+                this.setValueInState('URL', event.target.value)
+              }
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} text={'Cancel'} />
             <Button
-              disabled={this.state.disabledAdd}
+              disabled={disabledAdd}
               onClick={() => this.addCV()}
               text={'Add'}
             />
@@ -176,4 +179,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PupopNewCV);
+)(PopupNewCV);

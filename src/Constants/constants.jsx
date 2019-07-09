@@ -6,7 +6,7 @@ import Recommended from '../Pages/Recommended';
 import Social from '../Pages/Social';
 import Whole from '../Pages/Whole';
 import moment from 'moment';
-import Report from "../Pages/Report";
+import Report from '../Pages/Report';
 
 export const PEOPLE = [
   {
@@ -197,7 +197,8 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-export const STATUS = ['True', 'False'];
+
+export const STATUS = ['True', 'False']; //This constant used for options in Select.
 
 export const ROUTES = [
   {title: 'Referral', path: '/recommended', component: Recommended, newTab: false},
@@ -209,6 +210,19 @@ export const ROUTES = [
   {title: 'Report', path: '/report', component: Report, newTab: true},
 ];
 
-export const URL = "http://localhost:8081/summary?";
+export const URL = "http://172.16.0.30:8081/summary";
+
+export const SOURCE = {Recommended: 3, NetWork: 4}
+export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];
+
+export const POSITIONS = {
+  'JavaScript': 1,
+  'Python' : 2,
+  'Java' : 3,
+  'Project Manager': 4,
+  'QA Engineer': 5, 
+  'C#': 6
+}
+
 
 export const URL_POSITION = "http://localhost:8081/position";

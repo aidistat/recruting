@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './header.css';
 import * as Constants from '../../Constants/constants';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
    render() {
@@ -18,7 +18,11 @@ class Header extends Component {
           {Constants.ROUTES.map((route, i) => {
             return (
               <li key={i} className={location === route.path ? 'currentTab' : ''}>
-                <NavLink to={route.path}> {route.title} </NavLink>
+                {route.newTab ? (
+                  <a target="_blank" href={route.path}>{route.title}</a>
+                ) : (
+                  <NavLink to={route.path}> {route.title} </NavLink>
+                )}
               </li>
             );
           })}

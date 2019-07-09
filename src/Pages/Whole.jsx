@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import Table from '../Components/Table/Table';
 import Filters from '../Components/Filters/Filters';
 import * as Constants from '../Constants/constants';
-import { setUsersAC } from '../redux/user-reducer';
+import {
+  setTotalUsersCountAC,
+  setCurrentPageAC,
+  setUsersAC
+} from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import AlertDialog from '../Components/PopupNewVacancy/NewVacancy';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
-
   componentDidMount() {
-    Services.fetchJson(Constants.URL).then(data =>
-      this.props.setUsers(data.content)
-    );
+    Services.fetchJson(Constants.URL).then(data => {
+      this.props.setUsers(data.content);
+      this.props.setTotalUsersCount(data.totalElements);
+    });
   }
 
   render() {
+    console.log(this.props.totalUsersCount)
     return (
       <div className="wrapper">
         <Filters />
@@ -27,6 +32,7 @@ class Whole extends Component {
         <Table
           columns={Constants.COLUMNS_WHOLEDB}
           data={this.props.users}
+          url={Constants.URL}
         />
       </div>
     );
@@ -45,6 +51,12 @@ const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));
+    },
+    setCurrentPage: pageNumber => {
+      dispatch(setCurrentPageAC(pageNumber));
+    },
+    setTotalUsersCount: count => {
+      dispatch(setTotalUsersCountAC(count));
     }
   };
 };

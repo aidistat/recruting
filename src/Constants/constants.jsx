@@ -8,88 +8,6 @@ import Whole from '../Pages/Whole';
 import moment from 'moment';
 import Report from "../Pages/Report";
 
-export const PEOPLE = [
-  {
-    name: 'John',
-    language: 'Python',
-    date: '06/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Jack',
-    language: 'Python',
-    date: '05/11/2019',
-    status: 'Not Checked'
-  },
-  {
-    name: 'Jeremy',
-    language: 'Java',
-    date: '04/22/2019',
-    status: 'Not Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  }
-];
-export const TEST = [
-  {
-    Header: 'ID',
-    accessor: 'id'
-  },
-  {
-    Header: 'Name',
-    accessor: 'fullName'
-  },
-  {
-    Header: 'test',
-    accessor: 'test'
-  },
-  {
-    Header: 'Actions',
-    Cell: props => {
-      return <button onClick={i => console.log(i)}>DELETE</button>;
-    }
-  }
-];
 export const COLUMNS = [
   {
     Header: 'Name',
@@ -101,7 +19,7 @@ export const COLUMNS = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url'
   },
   {
     Header: 'Date',
@@ -126,7 +44,7 @@ export const COLUMNS_WHOLEDB = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url'
   },
   {
     Header: 'Date',
@@ -164,7 +82,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
   },
   {
     Header: 'Link',
-    accessor: 'link',
+    accessor: 'url',
   }
 ];
 
@@ -184,7 +102,7 @@ export const COLUMNS_FOR_SOCIAL = [
   },
   {
     Header: 'Link',
-    accessor: 'link',
+    accessor: 'url',
   }
 ];
 
@@ -209,6 +127,10 @@ export const ROUTES = [
   {title: 'Report', path: '/report', component: Report, newTab: true},
 ];
 
-export const URL = "http://localhost:8081/summary?";
-
+export const URL = "http://localhost:8081/summary?size=50";
+export const URL_HH = "http://localhost:8081/summary/sources/hh?size=50";
+export const URL_JOBKG = "http://localhost:8081/summary/sources/jobkg?size=50";
+export const URL_GMAIL = "http://localhost:8081/summary/sources/gmail?size=50";
+export const URL_REFERRAL = "http://localhost:8081/summary/sources/fromadvisor?size=50";
+export const URL_SOCIAL = "http://localhost:8081/summary/sources/social?size=50";
 export const URL_POSITION = "http://localhost:8081/position";

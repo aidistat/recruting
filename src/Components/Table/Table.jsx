@@ -58,7 +58,7 @@ class Table extends Component {
           innerClass="pagination"
           itemClassFirst="first"
           itemClassLast="last"
-          activeClass="active"
+          activeClass="activePage"
           activePage={this.state.pageNumber}
           itemsCountPerPage={10}
           totalItemsCount={197}

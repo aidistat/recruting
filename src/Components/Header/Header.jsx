@@ -4,7 +4,12 @@ import * as Constants from '../../Constants/constants';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+<<<<<<< HEAD
   render() {
+=======
+   render() {
+       let location = window.location.pathname;
+>>>>>>> dev
     return (
       <div className="header">
         <div className="logo-icon">
@@ -16,12 +21,17 @@ class Header extends Component {
         <ul className="nav">
           {Constants.ROUTES.map((route, i) => {
             return (
+<<<<<<< HEAD
               <li key={i}>
                 {route.newTab ? (
                   <a target="_blank" href={route.path}>{route.title}</a>
                 ) : (
                   <NavLink to={route.path}> {route.title} </NavLink>
                 )}
+=======
+              <li key={i} className={location === route.path ? 'currentTab' : ''}>
+                <NavLink to={route.path}> {route.title} </NavLink>
+>>>>>>> dev
               </li>
             );
           })}

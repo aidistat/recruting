@@ -201,7 +201,7 @@ export const TECHNOLOGIES = [
 export const STATUS = ['True', 'False']; //This constant used for options in Select.
 
 export const ROUTES = [
-  {title: 'Recommended', path: '/recommended', component: Recommended, newTab: false},
+  {title: 'Referral', path: '/recommended', component: Recommended, newTab: false},
   {title: 'Social', path: '/social', component: Social, newTab: false},
   { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
   { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},

@@ -4,12 +4,15 @@ export const fetchJson = async url => {
 };
 
 export const fetchJsonPost = async (url, body) => {
-  const response = await fetch(url, {
-    body: body,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
-  return await response;
+  try {
+    const response = await fetch(url, {
+      body: body,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    return await response;
+  } catch (error) {return error;
+  }
 };

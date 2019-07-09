@@ -198,7 +198,7 @@ export const TECHNOLOGIES = [
 ];
 
 
-export const STATUS = ['True', 'False'];
+export const STATUS = ['True', 'False']; //This constant used for options in Select.
 
 export const ROUTES = [
   {title: 'Recommended', path: '/recommended', component: Recommended, newTab: false},

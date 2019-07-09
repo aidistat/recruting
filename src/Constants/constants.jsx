@@ -223,7 +223,6 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-export const TECHNOLOGIES_FOR_ADD = ['Recomented', 'NetWork'];
 
 export const STATUS = ['True', 'False'];
 
@@ -237,4 +236,15 @@ export const ROUTES = [
 
 export const URL = "http://172.16.0.30:8081/summary";
 
-export const SOURSE = {Recomented: 3, netWork: 4}
+export const SOURSE = {Recomented: 3, NetWork: 4}
+export const TECHNOLOGIES_FOR_ADD = ['Recomented', 'NetWork'];
+
+export const POSITIONS = {
+  'JavaScript': 1,
+  'Python' : 2,
+  'Java' : 3,
+  'Project Manager': 4,
+  'QA Engineer': 5, 
+  'C#': 6
+}
+

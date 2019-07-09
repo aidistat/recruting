@@ -7,47 +7,63 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import * as Constants from '../../Constants/constants';
-import Calendar from '../Calendar/Calendar';
 import * as Services from '../../Services/basicServices';
+import moment from 'moment';
+import Error from '../Error/Error';
+import { connect } from 'react-redux';
 
-export default class AlertDialog extends Component {
+import { setUsersAC } from '../../redux/user-reducer';
+
+class PupopNewCV extends Component {
   setThisState = (changeID, change) => {
     this.setState({ [changeID]: change });
-    console.log(this.state);
     this.setButtonPermissions();
+  };
+
+  state = {
+    open: false,
+    disabledAdd: true
   };
 
   setButtonPermissions = () => {
     this.state.sourse &&
     this.state.Name &&
-    this.state.Position &&
-    this.state.URL &&
-    this.state.date
+    this.state.position &&
+    this.state.URL
       ? this.setState({ disabledAdd: false })
       : this.setState({ disabledAdd: true });
   };
 
-  state = {
-    open: false,
-    disabledAdd: false
+  updateUsers = () => {
+    Services.fetchJson(Constants.URL + `?page=1`).then(data =>
+      this.props.setUsers(data.content)
+    );
   };
 
   addCV = () => {
     const resultObject = {
       fullName: this.state.Name,
-      date: this.state.date,
-      source: 2,
+      date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
+      source: Constants.SOURSE[this.state.sourse],
       statuses: '',
       subject: '',
       checked: true,
       position: {
         name: this.state.position,
-        id: 1
+        id: Constants.POSITIONS[this.state.position]
       }
     };
-
     const data = JSON.stringify(resultObject);
-    Services.fetchJsonPost(Constants.URL, data);
+    Services.fetchJsonPost(Constants.URL, data)
+      .then(message => this.handleClose())
+      .then(this.updateUsers())
+      .then(
+        this.setState({
+          open: true,
+          disabledAdd: true
+        })
+      )
+      .catch(error => this.setState({ error: error.message }));
   };
 
   handleClickOpen = () => {
@@ -59,6 +75,7 @@ export default class AlertDialog extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
   render() {
     const sourse = Constants.TECHNOLOGIES_FOR_ADD;
     return (
@@ -73,6 +90,7 @@ export default class AlertDialog extends Component {
         >
           <DialogTitle id="form-dialog-title">Add new CV</DialogTitle>
           <DialogContent>
+            {this.state.error ? <Error error={this.state.error} /> : <div />}
             <Select
               autoFocus
               required={true}
@@ -106,7 +124,7 @@ export default class AlertDialog extends Component {
             />
             <Select
               onChange={event =>
-                this.setThisState('Position', event.target.value)
+                this.setThisState('position', event.target.value)
               }
               options={Constants.TECHNOLOGIES}
               title={'Position'}
@@ -118,9 +136,6 @@ export default class AlertDialog extends Component {
               type="text"
               fullWidth
               onChange={event => this.setThisState('URL', event.target.value)}
-            />
-            <Calendar
-              onChange={event => this.setThisState('date', event.target.value)}
             />
           </DialogContent>
           <DialogActions>
@@ -136,3 +151,24 @@ export default class AlertDialog extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    totalUsersCount: state.usersPage.totalUsersCount
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUsers: users => {
+      dispatch(setUsersAC(users));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PupopNewCV);

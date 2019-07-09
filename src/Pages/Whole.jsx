@@ -6,7 +6,7 @@ import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import NewVacancy from '../Components/PopupNewVacancy/NewVacancy';
-import PopupNewCV from '../Components/PupopNewCV/PopupNewCV'
+import PopupNewCV from '../Components/PopupNewCV/PopupNewCV'
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {

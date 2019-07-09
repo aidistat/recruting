@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 
 class Header extends Component {
    render() {
+       let location = window.location.pathname;
     return (
       <div className="header">
         <div className="logo-icon">
@@ -16,7 +17,7 @@ class Header extends Component {
         <ul className="nav">
           {Constants.ROUTES.map((route, i) => {
             return (
-              <li key={i}>
+              <li key={i} className={location === route.path ? 'currentTab' : ''}>
                 <NavLink to={route.path}> {route.title} </NavLink>
               </li>
             );

@@ -9,8 +9,16 @@
 .last {
   border-radius: 0 20px 20px 0;
 }
-.active {
+.activePage {
   background: #dddddd;
+}
+a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  height: 100%;
+  outline: none;
 }
 .pagination li {
   display: flex;
@@ -25,7 +33,7 @@
 .pagination li a {
   color: #8c8787;
 }
-.active a {
+.activePage a {
   color: #018be4 !important;
   font-weight: bold;
 }

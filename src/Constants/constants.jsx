@@ -1,8 +1,9 @@
 import React from 'react';
-import Select from '../Components/Select/Select';
 import JobKg from '../Pages/Jobkg';
 import HeadHunter from '../Pages/Headhunter';
 import Zensoftio from '../Pages/Zensoftio';
+import Recommended from '../Pages/Recommended';
+import Social from '../Pages/Social';
 import Whole from '../Pages/Whole';
 import moment from 'moment';
 import Report from '../Pages/Report';
@@ -114,103 +115,76 @@ export const COLUMNS = [
   }
 ];
 
-export const STATUSES = ['Pending', 'Applied', 'Rejected', 'Interview'];
-
-export const COLUMNS_WITH_STATUSES = [
+export const COLUMNS_WHOLEDB = [
   {
     Header: 'Name',
-    accessor: 'name'
+    accessor: 'fullName'
   },
   {
     Header: 'Language',
-    accessor: 'language'
+    accessor: 'position.name'
+  },
+  {
+    Header: 'Link',
+    accessor: 'link'
   },
   {
     Header: 'Date',
-    accessor: 'date'
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
+  },
+  {
+    Header: 'Checked',
+    accessor: 'checked',
+    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
   },
   {
     Header: 'Status',
     accessor: 'status'
-  },
-  {
-    Header: 'Statuses',
-    Cell: props => {
-      return <Select options={STATUSES} />;
-    }
   }
 ];
 
-export const ALL_PEOPLE = [
+export const COLUMNS_FOR_RECOMMENDED = [
   {
-    name: 'John',
-    language: 'Python',
-    date: '06/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Name',
+    accessor: 'fullName'
   },
   {
-    name: 'Jack',
-    language: 'Python',
-    date: '05/11/2019',
-    status: 'Not Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Language',
+    accessor: 'position.name'
   },
   {
-    name: 'Jeremy',
-    language: 'Java',
-    date: '04/22/2019',
-    status: 'Not Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'From',
+    accessor: 'from'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Date',
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Link',
+    accessor: 'link',
+  }
+];
+
+export const COLUMNS_FOR_SOCIAL = [
+  {
+    Header: 'Name',
+    accessor: 'fullName'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Language',
+    accessor: 'position.name'
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Date',
+    accessor: 'date',
+    Cell: ({ value }) => moment(value).format('MM/DD/YYYY')
   },
   {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked',
-    statuses: <Select options={STATUSES} />
+    Header: 'Link',
+    accessor: 'link',
   }
 ];
 
@@ -227,11 +201,13 @@ export const TECHNOLOGIES = [
 export const STATUS = ['True', 'False'];
 
 export const ROUTES = [
+  {title: 'Recommended', path: '/recommended', component: Recommended, newTab: false},
+  {title: 'Social', path: '/social', component: Social, newTab: false},
   { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
   { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},
   { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
   { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
-  {title: 'Report', path: '/report', component: Report, newTab: true}
+  {title: 'Report', path: '/report', component: Report, newTab: true},
 ];
 
 export const URL = "http://172.16.0.30:8081/summary";
@@ -248,3 +224,5 @@ export const POSITIONS = {
   'C#': 6
 }
 
+
+export const URL_POSITION = "http://localhost:8081/position";

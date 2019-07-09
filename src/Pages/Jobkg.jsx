@@ -8,9 +8,6 @@ import Search from '../Components/Search/Search';
 import * as Services from '../Services/basicServices';
 
 class JobKg extends Component {
-  state = {
-
-  };
 
   async doSearch(value) {
     if (!value || value === ' ') {

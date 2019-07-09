@@ -1,9 +1,9 @@
 export const fetchJson = async url => {
   const response = await fetch(url);
   return await response.json();
- };
- 
- export const fetchJsonPost = async (url, body) => {
+};
+
+export const fetchJsonPost = async (url, body) => {
   const response = await fetch(url, {
     body: body,
     method: 'POST',
@@ -11,5 +11,5 @@ export const fetchJson = async url => {
       'Content-Type': 'application/json',
     }
   });
-  return await response.json();
- };
+  return await response;
+};

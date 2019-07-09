@@ -21,7 +21,6 @@ class Whole extends Component {
   }
 
   render() {
-    console.log(this.props.totalUsersCount)
     return (
       <div className="wrapper">
         <Filters />

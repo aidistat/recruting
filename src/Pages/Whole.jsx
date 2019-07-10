@@ -15,7 +15,6 @@ import PopupUpdsteCV from '../Components/PopupUpdateCV/PopupUpdateCV';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
-
   componentDidMount() {
     Services.fetchJson(Constants.URL).then(data => {
       this.props.setUsers(data.content);
@@ -37,22 +36,20 @@ class Whole extends Component {
     const data = this.props.users.map(item => {
       return {
         ...item,
-        edit: <PopupUpdsteCV user={item}/>
+        edit: <PopupUpdsteCV user={item} />
       };
     });
     return (
       <div className="wrapper">
-        <Filters url={Constants.URL}/>
+        <Filters url={Constants.URL} />
         <div className="func">
-          <Search />
+          <Search onSearch={value => this.doSearch(value)} />
           <PopupNewCV />
           <NewVacancy />
-          <Search onSearch={value => this.doSearch(value)}/>
-          <AlertDialog />
         </div>
         <Table
           columns={Constants.COLUMNS_WHOLEDB}
-          data={this.props.users}
+          data={data}
           url={Constants.URL}
         />
       </div>

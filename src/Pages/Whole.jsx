@@ -9,7 +9,9 @@ import {
 } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
-import AlertDialog from '../Components/PopupNewVacancy/NewVacancy';
+import NewVacancy from '../Components/PopupNewVacancy/NewVacancy';
+import PopupNewCV from '../Components/PopupNewCV/PopupNewCV';
+import PopupUpdsteCV from '../Components/PopupUpdateCV/PopupUpdateCV';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
@@ -32,10 +34,19 @@ class Whole extends Component {
   }
 
   render() {
+    const data = this.props.users.map(item => {
+      return {
+        ...item,
+        edit: <PopupUpdsteCV user={item}/>
+      };
+    });
     return (
       <div className="wrapper">
         <Filters url={Constants.URL}/>
         <div className="func">
+          <Search />
+          <PopupNewCV />
+          <NewVacancy />
           <Search onSearch={value => this.doSearch(value)}/>
           <AlertDialog />
         </div>

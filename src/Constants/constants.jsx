@@ -244,6 +244,7 @@ export const ROUTES = [
 ];
 
 export const URL = 'http://172.16.0.30:8081/summary';
+export const REPORT_URL = 'http://172.16.0.30:8081/report?'
 
 export const SOURCE = { Recommended: 3, NetWork: 4 };
 export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];

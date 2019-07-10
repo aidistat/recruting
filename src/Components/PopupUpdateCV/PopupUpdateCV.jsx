@@ -75,7 +75,6 @@ class PopupUpdateCV extends Component {
       }
     };
     const data = JSON.stringify(resultObject);
-    console.log(resultObject)
     Services.fetchJsonPUT(Constants.URL + '/' + this.props.user.id, data)
       .then(response => {
         if (response.status === 200) {
@@ -91,7 +90,6 @@ class PopupUpdateCV extends Component {
   deeleteCV = () => {
     Services.fetchDelete(Constants.URL + '/' + this.props.user.id)
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           this.handleClose();
           this.addNotificationSuccess();

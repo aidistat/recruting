@@ -9,10 +9,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import * as Constants from '../../Constants/constants';
 import * as Services from '../../Services/basicServices';
 import moment from 'moment';
-import Error from '../Error/Error';
 import { connect } from 'react-redux';
 import Calendar from '../Calendar/Calendar';
-
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 import { setUsersAC } from '../../redux/user-reducer';
 
 class PopupUpdateCV extends Component {
@@ -20,47 +20,103 @@ class PopupUpdateCV extends Component {
     this.setState({ [changeID]: change });
   };
 
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
   state = {
     open: false
   };
 
-  updateUsers = () => {
-    Services.fetchJson(Constants.URL + `?page=1`).then((
-      data //TODO page=1 need to finish
-    ) => this.props.setUsers(data.content));
+  addNotificationError = error => {
+    this.notificationDOMRef.current.addNotification({
+      title: ' Error ',
+      message: error,
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  };
+
+  addNotificationSuccess = () => {
+    this.notificationDOMRef.current.addNotification({
+      title: ' Success ',
+      message: 'successfully!',
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
   };
 
   updateCV = () => {
-    const { source, Name, position, URL } = this.state;
+    const { Name, position, URL, checked, status } = this.state;
     const resultObject = {
+      adviser: '',
       fullName: Name,
-      date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
-      source: Constants.SOURCE[source],
-      statuses: '',
+      id: this.props.user.id,
+      date: moment(this.state.date).format('YYYY-MM-DDT00:00:00'),
+      source: this.props.user.source,
+      statuses: status || '',
       subject: '',
-      checked: true,
+      checked: checked,
+      url: URL,
       position: {
         name: position,
         id: Constants.POSITIONS[position]
       }
     };
     const data = JSON.stringify(resultObject);
-    Services.fetchJsonPost(Constants.URL, data)
-      .then(response =>
-        response.status === 200
-          ? this.setState({
-              open: false
-            })
-          : this.setState({
-              open: true,
-              error: response.message
-            })
-      )
-      .then(this.updateUsers())
-      .catch(error => this.setState({ error: error.message }));
+    console.log(resultObject)
+    Services.fetchJsonPUT(Constants.URL + '/' + this.props.user.id, data)
+      .then(response => {
+        if (response.status === 200) {
+          this.handleClose();
+          this.addNotificationSuccess();
+        } else {
+          this.addNotificationError('error');
+        }
+      })
+      .catch(error => this.addNotificationError(error.message));
+  };
+
+  deeleteCV = () => {
+    Services.fetchDelete(Constants.URL + '/' + this.props.user.id)
+      .then(response => {
+        console.log(response)
+        if (response.status === 200) {
+          this.handleClose();
+          this.addNotificationSuccess();
+        } else {
+          this.addNotificationError('error');
+        }
+      })
+      .catch(error => {
+        this.addNotificationError(error.message);
+      });
   };
 
   handleOpen = () => {
+    const user = this.props.user;
+    this.setState({
+      status: user.statuses,
+      URL: user.url || '',
+      Name: user.fullName,
+      date: user.date ,
+      position: user.position.name,
+      checked:
+        String(user.checked)
+          .charAt(0)
+          .toUpperCase() + String(user.checked).slice(1)
+    })
     this.setState({
       open: true
     });
@@ -71,9 +127,8 @@ class PopupUpdateCV extends Component {
   };
 
   render() {
-    const { open, source, error, disabledAdd } = this.state;
+    const { open, Name, date, position, checked, status, URL } = this.state;
 
-    const sourceOptions = Constants.TECHNOLOGIES_FOR_ADD;
     return (
       <div>
         <Button text={'UpdateCV'} onClick={this.handleOpen} />
@@ -84,19 +139,11 @@ class PopupUpdateCV extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          <ReactNotification ref={this.notificationDOMRef} />
           <DialogTitle id="form-dialog-title">Update CV</DialogTitle>
           <DialogContent>
-            {error && <Error error={error} />}
-            <Select
-              autoFocus
-              required={true}
-              onChange={event =>
-                this.setValueInState('source', event.target.value)
-              }
-              options={sourceOptions}
-              title={'Source'}
-            />
             <TextField
+              value={Name}
               margin="dense"
               id="name"
               label="Name"
@@ -107,12 +154,14 @@ class PopupUpdateCV extends Component {
               }
             />
             <Calendar
+              value={moment(date).format('YYYY-MM-DD')}
               label={'date'}
               onChange={event =>
                 this.setValueInState('date', event.target.value)
               }
             />
             <Select
+              value={position}
               onChange={event =>
                 this.setValueInState('position', event.target.value)
               }
@@ -120,13 +169,28 @@ class PopupUpdateCV extends Component {
               title={'Position'}
             />
             <Select
+              value={checked}
               onChange={event =>
                 this.setValueInState('checked', event.target.value)
               }
               options={Constants.STATUS}
               title={'Checked'}
             />
+            <Select
+              value={Constants.STATUSES_OBJ[status] || ''}
+              onChange={event =>
+                this.setValueInState(
+                  'status',
+                  Object.keys(Constants.STATUSES_OBJ).find(
+                    i => Constants.STATUSES_OBJ[i] === event.target.value
+                  )
+                )
+              }
+              options={Constants.STATUSES}
+              title={'Status'}
+            />
             <TextField
+              value={URL || ''}
               margin="dense"
               id="URL to Document"
               label="URL to Document"
@@ -139,13 +203,9 @@ class PopupUpdateCV extends Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} text={'Cancel'} />
-            <Button onClick={this.handleClose} text={'Delete'} />
+            <Button onClick={this.deeleteCV} text={'Delete'} />
 
-            <Button
-              disabled={disabledAdd}
-              onClick={() => this.updateCV()}
-              text={'SAVE'}
-            />
+            <Button onClick={() => this.updateCV(this.state)} text={'SAVE'} />
           </DialogActions>
         </Dialog>
       </div>

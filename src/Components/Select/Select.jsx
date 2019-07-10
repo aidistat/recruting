@@ -6,12 +6,13 @@ import './select.css';
 
 class Select extends Component {
   render() {
-    let { onChange, options, title } = this.props;
+    let { onChange, options, title, value } = this.props;
     return (
       <FormControl>
         <InputLabel htmlFor="profile">{title}</InputLabel>
         <SelectUI
           native
+          value={value}
           onChange={onChange}
           inputProps={{
             name: 'profile',

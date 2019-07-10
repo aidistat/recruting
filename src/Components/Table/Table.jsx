@@ -19,7 +19,7 @@ class Table extends Component {
       pageNumber: pageNumber
     });
     const data = await Services.fetchJson(
-      `${Constants.URL}page=${pageNumber - 1}`
+      `${Constants.URL}?page=${pageNumber - 1}`
     );
     this.props.setUsers(data.content);
   };

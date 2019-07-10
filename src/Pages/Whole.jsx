@@ -6,11 +6,11 @@ import { setUsersAC } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import NewVacancy from '../Components/PopupNewVacancy/NewVacancy';
-import PopupNewCV from '../Components/PopupNewCV/PopupNewCV'
+import PopupNewCV from '../Components/PopupNewCV/PopupNewCV';
+import PopupUpdsteCV from '../Components/PopupUpdateCV/PopupUpdateCV';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
-
   componentDidMount() {
     Services.fetchJson(Constants.URL).then(data =>
       this.props.setUsers(data.content)
@@ -18,6 +18,12 @@ class Whole extends Component {
   }
 
   render() {
+    const data = this.props.users.map(item => {
+      return {
+        ...item,
+        edit: <PopupUpdsteCV user={item}/>
+      };
+    });
     return (
       <div className="wrapper">
         <Filters />
@@ -26,10 +32,7 @@ class Whole extends Component {
           <PopupNewCV />
           <NewVacancy />
         </div>
-        <Table
-          columns={Constants.COLUMNS_WHOLEDB}
-          data={this.props.users}
-        />
+        <Table columns={Constants.COLUMNS_WHOLEDB} data={data} />
       </div>
     );
   }

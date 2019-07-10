@@ -10,16 +10,26 @@ import * as Services from "../Services/basicServices";
 class HeadHunter extends Component {
 
   componentDidMount() {
-    Services.fetchJson(Constants.URL).then(data =>
+    Services.fetchJson(Constants.URL_HH).then(data =>
         this.props.setUsers(data.content)
     );
+  }
+
+  async doSearch(value) {
+    if (!value || value === ' ') {
+      let data = await Services.fetchJson(Constants.URL_HH);
+      this.props.setUsers(data.content);
+    } else {
+      let data = await Services.fetchJson(`${Constants.URL_HH}&fullName=${value}`);
+      this.props.setUsers(data.content);
+    }
   }
 
   render() {
     return (
       <div>
-        <Filters />
-        <Search />
+        <Filters url={Constants.URL_HH}/>
+        <Search onSearch={value => this.doSearch(value)}/>
         <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>
     );

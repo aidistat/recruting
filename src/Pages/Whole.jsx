@@ -13,6 +13,7 @@ import AlertDialog from '../Components/PopupNewVacancy/NewVacancy';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
+
   componentDidMount() {
     Services.fetchJson(Constants.URL).then(data => {
       this.props.setUsers(data.content);
@@ -20,12 +21,22 @@ class Whole extends Component {
     });
   }
 
+  async doSearch(value) {
+    if (!value || value === ' ') {
+      let data = await Services.fetchJson(Constants.URL);
+      this.props.setUsers(data.content);
+    } else {
+      let data = await Services.fetchJson(`${Constants.URL}&fullName=${value}`);
+      this.props.setUsers(data.content);
+    }
+  }
+
   render() {
     return (
       <div className="wrapper">
-        <Filters />
+        <Filters url={Constants.URL}/>
         <div className="func">
-          <Search />
+          <Search onSearch={value => this.doSearch(value)}/>
           <AlertDialog />
         </div>
         <Table

@@ -4,14 +4,16 @@ import Select from '../Select/Select';
 import Calendar from '../Calendar/Calendar';
 import Button from '../Button/Button';
 import * as Constants from '../../Constants/constants';
-import { setUsersAC } from '../../redux/user-reducer';
+import { setPositionsAC, setUsersAC } from '../../redux/user-reducer';
 import { connect } from 'react-redux';
 import * as Services from '../../Services/basicServices';
 
 class Filters extends Component {
-  state = {
-
-  };
+  componentDidMount() {
+    Services.fetchJson(Constants.URL_POSITION).then(data => {
+      this.props.setPosition(data);
+    });
+  }
 
   bind = (field, e) => {
     this.setState({
@@ -20,11 +22,13 @@ class Filters extends Component {
   };
 
   applyFilters = async () => {
-    let url = Constants.URL;
+    let url = this.props.url;
     const keys = Object.keys(this.state);
     keys.map((item, i) => {
-      url = url + keys[i] + '=' + this.state[keys[i]] + '&';
-      return url;
+      if (this.state[keys[i]].length !== 0) {
+        url = url + '&' + keys[i] + '=' + this.state[keys[i]];
+        return url;
+      } else return url;
     });
     let data = await Services.fetchJson(url);
     this.props.setUsers(data.content);
@@ -38,7 +42,7 @@ class Filters extends Component {
             onChange={e => {
               this.bind('profile', e);
             }}
-            options={Constants.TECHNOLOGIES}
+            options={this.props.positions}
             title="Profile"
           />
         </div>
@@ -61,7 +65,7 @@ class Filters extends Component {
             onChange={e => {
               this.bind('checked', e);
             }}
-            options={Constants.STATUS}
+            options={Constants.STATUSES}
             title="Checked"
           />
         </div>
@@ -73,7 +77,8 @@ class Filters extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    positions: state.usersPage.positions
   };
 };
 
@@ -81,6 +86,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setUsers: users => {
       dispatch(setUsersAC(users));
+    },
+    setPosition: positions => {
+      dispatch(setPositionsAC(positions));
     }
   };
 };

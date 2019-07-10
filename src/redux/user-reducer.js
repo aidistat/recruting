@@ -1,12 +1,14 @@
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const SET_POSITIONS = 'SET_POSITIONS';
 
 let initialState = {
   users: [],
   pageSize: 50,
   totalUsersCount: 0,
-  currentPage: 1
+  currentPage: 1,
+  positions: []
 };
 
 const userReducer = (state = initialState, action) => {
@@ -14,8 +16,10 @@ const userReducer = (state = initialState, action) => {
     case SET_USERS: {
       return { ...state, users: action.users };
     }
+    case SET_POSITIONS: {
+      return { ...state, positions: action.positions };
+    }
     case SET_CURRENT_PAGE: {
-      console.log("REDUCER", action.currentPage);
       return { ...state, currentPage: action.currentPage };
     }
     case SET_TOTAL_USERS_COUNT: {
@@ -27,6 +31,7 @@ const userReducer = (state = initialState, action) => {
 };
 
 export const setUsersAC = users => ({ type: SET_USERS, users });
+export const setPositionsAC = positions => ({ type: SET_POSITIONS, positions });
 export const setCurrentPageAC = currentPage => ({ type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCountAC = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 

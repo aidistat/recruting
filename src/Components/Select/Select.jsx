@@ -20,7 +20,7 @@ class Select extends Component {
         >
           <option value="" />
           {options.map((option, i) => {
-            return <option key={i}>{option}</option>;
+            return <option key={i}>{option.name}</option>;
           })}
         </SelectUI>
       </FormControl>

@@ -19,7 +19,8 @@ export const COLUMNS = [
   },
   {
     Header: 'Link',
-    accessor: 'url'
+    accessor: 'url',
+    Cell: ({value}) => <a href={value} target="_blank">CV</a>
   },
   {
     Header: 'Date',
@@ -44,7 +45,8 @@ export const COLUMNS_WHOLEDB = [
   },
   {
     Header: 'Link',
-    accessor: 'url'
+    accessor: 'url',
+    Cell: ({value}) => <a href={value} target="_blank">CV</a>
   },
   {
     Header: 'Date',
@@ -73,7 +75,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
   },
   {
     Header: 'From',
-    accessor: 'from'
+    accessor: 'adviser'
   },
   {
     Header: 'Date',
@@ -83,6 +85,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
   {
     Header: 'Link',
     accessor: 'url',
+    Cell: ({value}) => <a href={value} target="_blank">CV</a>
   }
 ];
 
@@ -103,19 +106,11 @@ export const COLUMNS_FOR_SOCIAL = [
   {
     Header: 'Link',
     accessor: 'url',
+    Cell: ({value}) => <a href={value} target="_blank">CV</a>
   }
 ];
 
-export const TECHNOLOGIES = [
-  'JavaScript',
-  'Python',
-  'Java',
-  'Project Manager',
-  'QA Engineer',
-  'C#'
-];
-
-export const STATUS = ['True', 'False'];
+export const STATUSES = [{name: 'True'},{name: 'False'}];
 
 export const ROUTES = [
   {title: 'Referral', path: '/recommended', component: Recommended, newTab: false},

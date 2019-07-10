@@ -119,12 +119,12 @@ export const COLUMNS = [
 ];
 
 export const STATUSES_OBJ = {
-  0: "PENDING",
-  1: "APPLIED",
-  2: "CALLED",
-  3: "REJECTED",
-  4: "INTERVIEW"
-}
+  0: 'PENDING',
+  1: 'APPLIED',
+  2: 'CALLED',
+  3: 'REJECTED',
+  4: 'INTERVIEW'
+};
 
 export const COLUMNS_WHOLEDB = [
   {
@@ -155,7 +155,7 @@ export const COLUMNS_WHOLEDB = [
   {
     Header: 'Status',
     accessor: 'statuses',
-    Cell: ({value}) => STATUSES_OBJ[value] || ''
+    Cell: ({ value }) => STATUSES_OBJ[value] || ''
   },
   {
     Header: 'Edit',
@@ -207,14 +207,14 @@ export const COLUMNS_FOR_SOCIAL = [
   }
 ];
 
-export const TECHNOLOGIES = [
-  'JavaScript',
-  'Python',
-  'Java',
-  'Project Manager',
-  'QA Engineer',
-  'C#'
-];
+// export const TECHNOLOGIES = [
+//   'JavaScript',
+//   'Python',
+//   'Java',
+//   'Project Manager',
+//   'QA Engineer',
+//   'C#'
+// ];
 
 export const STATUS = ['True', 'False']; //This constant used for options in Select.
 
@@ -244,23 +244,62 @@ export const ROUTES = [
 ];
 
 export const URL = 'http://172.16.0.30:8081/summary';
-export const REPORT_URL = 'http://172.16.0.30:8081/report?'
+export const REPORT_URL = 'http://172.16.0.30:8081/report?';
 
 export const SOURCE = { Recommended: 3, NetWork: 4 };
 export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];
 
-export const POSITIONS = {
-  JavaScript: 3,
-  Python: 2,
-  HR: 4,
-  Java: 27,
-  'Project Manager': 4,
-  'QA Engineer': 31,
-  'C#': 28
-};
+// export const POSITIONS = {
+//   JavaScript: 3,
+//   Python: 2,
+//   HR: 4,
+//   Java: 27,
+//   'Project Manager': 4,
+//   'QA Engineer': 31,
+//   'C#': 28
+// };
 
-export const STATUSES = ['CALLED', 'INTERVIEW', 'PENDING', 'REJECTED', 'APPLIED'];
+export const POSITIONS = [
+  {
+    name: 'Python',
+    id: 2
+  },
+  {
+    name: 'JavaScript',
+    id: 3
+  },
+  {
+    name: 'HR',
+    id: 4
+  },
+  {
+    name: 'Java',
+    id: 27
+  },
+  {
+    name: 'C#',
+    id: 28
+  },
+  {
+    name: 'QA Engineer',
+    id: 31
+  },
+  {
+    name: 'Администратор',
+    id: 38
+  },
+  {
+    name: 'dawgdh',
+    id: 39
+  }
+];
 
-
+export const STATUSES = [
+  'CALLED',
+  'INTERVIEW',
+  'PENDING',
+  'REJECTED',
+  'APPLIED'
+];
 
 export const URL_POSITION = 'http://localhost:8081/position';

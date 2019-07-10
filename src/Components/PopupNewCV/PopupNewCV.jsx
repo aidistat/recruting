@@ -9,12 +9,46 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import * as Constants from '../../Constants/constants';
 import * as Services from '../../Services/basicServices';
 import moment from 'moment';
-import Error from '../Error/Error';
 import { connect } from 'react-redux';
-
 import { setUsersAC } from '../../redux/user-reducer';
+import ReactNotification from 'react-notifications-component';
+
+import 'react-notifications-component/dist/theme.css';
 
 class PopupNewCV extends Component {
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
+  addNotificationError = error => {
+    this.notificationDOMRef.current.addNotification({
+      title: ' Error ',
+      message: error,
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  };
+
+  addNotificationSuccess = () => {
+    this.notificationDOMRef.current.addNotification({
+      title: ' Success ',
+      message: 'successfully!',
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: { duration: 2000 },
+      dismissable: { click: true }
+    });
+  };
+
   setValueInState = (changeID, change) => {
     this.setState({ [changeID]: change });
     this.setButtonPermissions();
@@ -32,15 +66,11 @@ class PopupNewCV extends Component {
       : this.setState({ disabledAdd: true });
   };
 
-  updateUsers = () => {
-    Services.fetchJson(Constants.URL + `?page=1`).then((
-      data //TODO page=1 need to finish
-    ) => this.props.setUsers(data.content));
-  };
-
   addCV = () => {
-    const { source, Name, position, URL } = this.state;
+    const { source, Name, position, URL, From } = this.state;
     const resultObject = {
+      adviser: From,
+      url: URL,
       fullName: Name,
       date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
       source: Constants.SOURCE[source],
@@ -54,39 +84,35 @@ class PopupNewCV extends Component {
     };
     const data = JSON.stringify(resultObject);
     Services.fetchJsonPost(Constants.URL, data)
-      .then(response =>
-        response.status === 200
-          ? this.setState({
-              open: false,
-              disabledAdd: true
-            })
-          : this.setState({
-              open: true,
-              disabledAdd: true,
-              error: response.message
-            })
-      )
-      .then(this.updateUsers())
-      .catch(error => this.setState({ error: error.message }));
+      .then(response => {
+        if (response.status === 200) {
+          this.handleClose();
+        } else {
+          this.addNotificationError('error');
+        }
+      })
+      .catch(error => {
+        this.addNotificationError(error.message);
+      });
   };
 
-  handleClickOpen = () => {
+  handleOpen = () => {
     this.setState({
       open: true
     });
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, disabledAdd: true });
   };
 
   render() {
-    const { open, source, error, disabledAdd } = this.state;
+    const { open, source, disabledAdd } = this.state;
 
     const sourceOptions = Constants.TECHNOLOGIES_FOR_ADD;
     return (
       <div>
-        <Button text={'add new CV'} onClick={this.handleClickOpen} />
+        <Button text={'add new CV'} onClick={this.handleOpen} />
         <Dialog
           className="popup"
           open={open}
@@ -94,9 +120,10 @@ class PopupNewCV extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          <ReactNotification ref={this.notificationDOMRef} />
+
           <DialogTitle id="form-dialog-title">Add new CV</DialogTitle>
           <DialogContent>
-            {error ? <Error error={error} /> : <div />}
             <Select
               autoFocus
               required={true}
@@ -109,7 +136,7 @@ class PopupNewCV extends Component {
             {source === 'Recommended' && (
               <TextField
                 margin="dense"
-                id="name"
+                id="From"
                 label="From"
                 type="text"
                 fullWidth
@@ -137,7 +164,7 @@ class PopupNewCV extends Component {
             />
             <TextField
               margin="dense"
-              id="name"
+              id="URLtoDocument"
               label="URL to Document"
               type="text"
               fullWidth

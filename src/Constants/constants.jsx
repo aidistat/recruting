@@ -111,9 +111,20 @@ export const COLUMNS = [
   {
     Header: 'Checked',
     accessor: 'checked',
-    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
+    Cell: ({ value }) =>
+      String(value)
+        .charAt(0)
+        .toUpperCase() + String(value).slice(1)
   }
 ];
+
+export const STATUSES_OBJ = {
+  0: "PENDING",
+  1: "APPLIED",
+  2: "CALLED",
+  3: "REJECTED",
+  4: "INTERVIEW"
+}
 
 export const COLUMNS_WHOLEDB = [
   {
@@ -136,11 +147,19 @@ export const COLUMNS_WHOLEDB = [
   {
     Header: 'Checked',
     accessor: 'checked',
-    Cell: ({ value }) => String(value).charAt(0).toUpperCase() + String(value).slice(1)
+    Cell: ({ value }) =>
+      String(value)
+        .charAt(0)
+        .toUpperCase() + String(value).slice(1)
   },
   {
     Header: 'Status',
-    accessor: 'status'
+    accessor: 'statuses',
+    Cell: ({value}) => STATUSES_OBJ[value] || ''
+  },
+  {
+    Header: 'Edit',
+    accessor: 'edit'
   }
 ];
 
@@ -164,7 +183,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
   },
   {
     Header: 'Link',
-    accessor: 'link',
+    accessor: 'link'
   }
 ];
 
@@ -184,7 +203,7 @@ export const COLUMNS_FOR_SOCIAL = [
   },
   {
     Header: 'Link',
-    accessor: 'link',
+    accessor: 'link'
   }
 ];
 
@@ -197,32 +216,50 @@ export const TECHNOLOGIES = [
   'C#'
 ];
 
-
 export const STATUS = ['True', 'False']; //This constant used for options in Select.
 
 export const ROUTES = [
-  {title: 'Referral', path: '/recommended', component: Recommended, newTab: false},
-  {title: 'Social', path: '/social', component: Social, newTab: false},
+  {
+    title: 'Referral',
+    path: '/recommended',
+    component: Recommended,
+    newTab: false
+  },
+  { title: 'Social', path: '/social', component: Social, newTab: false },
   { title: 'Job.kg', path: '/jobkg', component: JobKg, newTab: false },
-  { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false},
-  { title: 'Zensoft.io', path: '/zensoftio', component: Zensoftio, newTab: false},
-  { title: 'Entire DataBase', path: '/entiredb', component: Whole, newTab: false},
-  {title: 'Report', path: '/report', component: Report, newTab: true},
+  { title: 'HeadHunter', path: '/hh', component: HeadHunter, newTab: false },
+  {
+    title: 'Zensoft.io',
+    path: '/zensoftio',
+    component: Zensoftio,
+    newTab: false
+  },
+  {
+    title: 'Entire DataBase',
+    path: '/entiredb',
+    component: Whole,
+    newTab: false
+  },
+  { title: 'Report', path: '/report', component: Report, newTab: true }
 ];
 
-export const URL = "http://172.16.0.30:8081/summary";
+export const URL = 'http://172.16.0.30:8081/summary';
 
-export const SOURCE = {Recommended: 3, NetWork: 4}
+export const SOURCE = { Recommended: 3, NetWork: 4 };
 export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];
 
 export const POSITIONS = {
-  'JavaScript': 1,
-  'Python' : 2,
-  'Java' : 3,
+  JavaScript: 3,
+  Python: 2,
+  HR: 4,
+  Java: 27,
   'Project Manager': 4,
-  'QA Engineer': 5, 
-  'C#': 6
-}
+  'QA Engineer': 31,
+  'C#': 28
+};
+
+export const STATUSES = ['CALLED', 'INTERVIEW', 'PENDING', 'REJECTED', 'APPLIED'];
 
 
-export const URL_POSITION = "http://localhost:8081/position";
+
+export const URL_POSITION = 'http://localhost:8081/position';

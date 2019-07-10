@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
 import NewVacancy from '../Components/PopupNewVacancy/NewVacancy';
 import PopupNewCV from '../Components/PopupNewCV/PopupNewCV';
-import PopupUpdsteCV from '../Components/PopupUpdateCV/PopupUpdateCV';
+import PopupUpdateCV from '../Components/PopupUpdateCV/PopupUpdateCV';
 import * as Services from '../Services/basicServices';
 
 class Whole extends Component {
@@ -36,7 +36,7 @@ class Whole extends Component {
     const data = this.props.users.map(item => {
       return {
         ...item,
-        edit: <PopupUpdsteCV user={item} />
+        edit: <PopupUpdateCV user={item} />
       };
     });
     return (

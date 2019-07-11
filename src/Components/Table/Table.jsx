@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import '../../react-table.css';
 import ReactTable from 'react-table';
-import { setUsersAC, setUsersTotalCountAC } from '../../redux/user-reducer';
+import {
+  setCurrentPageAC,
+  setUsersAC
+} from '../../redux/user-reducer';
 import { connect } from 'react-redux';
 import Pagination from 'react-js-pagination';
 import './table.css';
 import Tooltip from '@material-ui/core/Tooltip';
 import * as Services from '../../Services/basicServices';
-import * as Constants from '../../Constants/constants';
+
+function PaginationTooltip(props) {
+  const {title, icon, placement = 'top'} = props;
+  return (
+      <Tooltip title={title} placement={placement}>
+        <span>{icon}</span>
+      </Tooltip>
+  )
+}
 
 class Table extends Component {
-  state = {
-    pageNumber: 1
-  };
-
   pageChanged = async pageNumber => {
-    this.setState({
-      pageNumber: pageNumber
-    });
+    await this.props.setCurrentPage(pageNumber);
     const data = await Services.fetchJson(
-      `${Constants.URL}?page=${pageNumber - 1}`
+      `${this.props.url}page=${pageNumber - 1}`
     );
     this.props.setUsers(data.content);
   };
@@ -31,37 +36,21 @@ class Table extends Component {
         <ReactTable
           columns={columns}
           data={data}
-          defaultPageSize={10}
+          defaultPageSize={this.props.pageSize}
           showPagination={false}
         />
         <Pagination
-          firstPageText={
-            <Tooltip title="First" placement="top">
-              <span>&laquo;</span>
-            </Tooltip>
-          }
-          prevPageText={
-            <Tooltip title="Prev" placement="top">
-              <span>&lt;</span>
-            </Tooltip>
-          }
-          nextPageText={
-            <Tooltip title="Next" placement="top">
-              <span>&gt;</span>
-            </Tooltip>
-          }
-          lastPageText={
-            <Tooltip title="Last" placement="top">
-              <span>&raquo;</span>
-            </Tooltip>
-          }
+          firstPageText={<PaginationTooltip title="First" icon="&laquo;"/>}
+          prevPageText={<PaginationTooltip title="Prev" icon="&lt;"/>}
+          nextPageText={<PaginationTooltip title="Next" icon="&gt;"/>}
+          lastPageText={<PaginationTooltip title="Last" icon="&raquo;"/>}
           innerClass="pagination"
           itemClassFirst="first"
           itemClassLast="last"
           activeClass="activePage"
-          activePage={this.state.pageNumber}
-          itemsCountPerPage={10}
-          totalItemsCount={197}
+          activePage={this.props.currentPage}
+          itemsCountPerPage={this.props.pageSize}
+          totalItemsCount={this.props.totalUsersCount}
           onChange={pageNumber => this.pageChanged(pageNumber)}
         />
       </div>
@@ -73,18 +62,15 @@ const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount
+    totalUsersCount: state.usersPage.totalUsersCount,
+    currentPage: state.usersPage.currentPage
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUsers: users => {
-      dispatch(setUsersAC(users));
-    },
-    setUsersTotalCount: count => {
-      dispatch(setUsersTotalCountAC(count));
-    }
+    setUsers: users => dispatch(setUsersAC(users)),
+    setCurrentPage: pageNumber => dispatch(setCurrentPageAC(pageNumber))
   };
 };
 

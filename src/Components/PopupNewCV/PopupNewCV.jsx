@@ -69,18 +69,15 @@ class PopupNewCV extends Component {
   addCV = () => {
     const { source, Name, position, URL, From } = this.state;
     const resultObject = {
-      adviser: From,
+      adviser: From || '',
       url: URL,
       fullName: Name,
       date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
-      source: Constants.SOURCE[source],
+      source: source,
       statuses: '',
       subject: '',
       checked: true,
-      position: {
-        name: position,
-        id: Constants.POSITIONS[position]
-      }
+      position: this.props.positions.find(item => item.name === position)
     };
     const data = JSON.stringify(resultObject);
     Services.fetchJsonPost(Constants.URL, data)
@@ -103,13 +100,20 @@ class PopupNewCV extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false, disabledAdd: true });
+    this.setState({
+      open: false,
+      disabledAdd: true,
+      source: undefined,
+      Name: undefined,
+      position: undefined,
+      URL: undefined,
+      From: undefined
+    });
   };
 
   render() {
+    const positions = this.props.positions;
     const { open, source, disabledAdd } = this.state;
-
-    const sourceOptions = Constants.TECHNOLOGIES_FOR_ADD;
     return (
       <div>
         <Button text={'add new CV'} onClick={this.handleOpen} />
@@ -128,12 +132,17 @@ class PopupNewCV extends Component {
               autoFocus
               required={true}
               onChange={event =>
-                this.setValueInState('source', event.target.value)
+                this.setValueInState(
+                  'source',
+                  Constants.sourcesForAddCV.find(
+                    item => item.name === event.target.value
+                  ).id
+                )
               }
-              options={sourceOptions}
+              options={Constants.sourcesForAddCV}
               title={'Source'}
             />
-            {source === 'Recommended' && (
+            {source === 3 && (
               <TextField
                 margin="dense"
                 id="From"
@@ -159,7 +168,7 @@ class PopupNewCV extends Component {
               onChange={event =>
                 this.setValueInState('position', event.target.value)
               }
-              options={Constants.TECHNOLOGIES}
+              options={positions}
               title={'Position'}
             />
             <TextField
@@ -189,6 +198,8 @@ class PopupNewCV extends Component {
 
 const mapStateToProps = state => {
   return {
+    statuses: state.usersPage.statuses,
+    positions: state.usersPage.positions,
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount

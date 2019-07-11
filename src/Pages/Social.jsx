@@ -11,23 +11,23 @@ class Social extends Component {
 
     async doSearch(value) {
         if (!value || value === ' ') {
-            let data = await Services.fetchJson(Constants.URL);
+            let data = await Services.fetchJson(Constants.URL_SOCIAL);
             this.props.setUsers(data.content);
         } else {
-            let data = await Services.fetchJson(`${Constants.URL}fullName=${value}`);
+            let data = await Services.fetchJson(`${Constants.URL_SOCIAL}&fullName=${value}`);
             this.props.setUsers(data.content);
         }
     }
 
     componentDidMount() {
-        Services.fetchJson(Constants.URL)
+        Services.fetchJson(Constants.URL_SOCIAL)
             .then(data => this.props.setUsers(data.content));
     }
 
     render() {
         return (
             <div>
-                <Filters />
+                <Filters url={Constants.URL_SOCIAL}/>
                 <Search onSearch={value => this.doSearch(value)} />
                 <Table columns={Constants.COLUMNS_FOR_SOCIAL} data={this.props.users} />
             </div>

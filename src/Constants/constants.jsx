@@ -8,88 +8,6 @@ import Whole from '../Pages/Whole';
 import moment from 'moment';
 import Report from '../Pages/Report';
 
-export const PEOPLE = [
-  {
-    name: 'John',
-    language: 'Python',
-    date: '06/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Jack',
-    language: 'Python',
-    date: '05/11/2019',
-    status: 'Not Checked'
-  },
-  {
-    name: 'Jeremy',
-    language: 'Java',
-    date: '04/22/2019',
-    status: 'Not Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  },
-  {
-    name: 'Joe',
-    language: 'C#',
-    date: '07/12/2019',
-    status: 'Checked'
-  }
-];
-export const TEST = [
-  {
-    Header: 'ID',
-    accessor: 'id'
-  },
-  {
-    Header: 'Name',
-    accessor: 'fullName'
-  },
-  {
-    Header: 'test',
-    accessor: 'test'
-  },
-  {
-    Header: 'Actions',
-    Cell: props => {
-      return <button onClick={i => console.log(i)}>DELETE</button>;
-    }
-  }
-];
 export const COLUMNS = [
   {
     Header: 'Name',
@@ -101,7 +19,12 @@ export const COLUMNS = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url',
+    Cell: ({ value }) => (
+      <a href={value} target="_blank">
+        CV
+      </a>
+    )
   },
   {
     Header: 'Date',
@@ -137,7 +60,12 @@ export const COLUMNS_WHOLEDB = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url',
+    Cell: ({ value }) => (
+      <a href={value} target="_blank">
+        CV
+      </a>
+    )
   },
   {
     Header: 'Date',
@@ -174,7 +102,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
   },
   {
     Header: 'From',
-    accessor: 'from'
+    accessor: 'adviser'
   },
   {
     Header: 'Date',
@@ -183,7 +111,12 @@ export const COLUMNS_FOR_RECOMMENDED = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url',
+    Cell: ({ value }) => (
+      <a href={value} target="_blank">
+        CV
+      </a>
+    )
   }
 ];
 
@@ -203,20 +136,21 @@ export const COLUMNS_FOR_SOCIAL = [
   },
   {
     Header: 'Link',
-    accessor: 'link'
+    accessor: 'url',
+    Cell: ({ value }) => (
+      <a href={value} target="_blank">
+        CV
+      </a>
+    )
   }
 ];
 
-// export const TECHNOLOGIES = [
-//   'JavaScript',
-//   'Python',
-//   'Java',
-//   'Project Manager',
-//   'QA Engineer',
-//   'C#'
-// ];
+export const STATUSES = [{ name: 'True' }, { name: 'False' }];
 
-export const STATUS = ['True', 'False']; //This constant used for options in Select.
+export const sourcesForAddCV = [
+  { id: 3, name: 'FROMADVISOR' },
+  { id: 4, name: 'SOCIAL' }
+];
 
 export const ROUTES = [
   {
@@ -242,64 +176,17 @@ export const ROUTES = [
   },
   { title: 'Report', path: '/report', component: Report, newTab: true }
 ];
-
-export const URL = 'http://172.16.0.30:8081/summary';
-export const REPORT_URL = 'http://172.16.0.30:8081/report?';
-
-export const SOURCE = { Recommended: 3, NetWork: 4 };
-export const TECHNOLOGIES_FOR_ADD = ['Recommended', 'NetWork'];
-
-// export const POSITIONS = {
-//   JavaScript: 3,
-//   Python: 2,
-//   HR: 4,
-//   Java: 27,
-//   'Project Manager': 4,
-//   'QA Engineer': 31,
-//   'C#': 28
-// };
-
-export const POSITIONS = [
-  {
-    name: 'Python',
-    id: 2
-  },
-  {
-    name: 'JavaScript',
-    id: 3
-  },
-  {
-    name: 'HR',
-    id: 4
-  },
-  {
-    name: 'Java',
-    id: 27
-  },
-  {
-    name: 'C#',
-    id: 28
-  },
-  {
-    name: 'QA Engineer',
-    id: 31
-  },
-  {
-    name: 'Администратор',
-    id: 38
-  },
-  {
-    name: 'dawgdh',
-    id: 39
-  }
-];
-
-export const STATUSES = [
-  'CALLED',
-  'INTERVIEW',
-  'PENDING',
-  'REJECTED',
-  'APPLIED'
-];
-
-export const URL_POSITION = 'http://localhost:8081/position';
+export const BASIC_URL = 'http://172.16.0.30:8081/summary'
+export const URL = 'http://172.16.0.30:8081/summary?size=50';
+export const URL_HH = 'http://172.16.0.30:8081/summary/sources/hh?size=50';
+export const URL_JOBKG =
+  'http://172.16.0.30:8081/summary/sources/jobkg?size=50';
+export const URL_GMAIL =
+  'http://172.16.0.30:8081/summary/sources/gmail?size=50';
+export const URL_REFERRAL =
+  'http://172.16.0.30:8081/summary/sources/fromadvisor?size=50';
+export const URL_SOCIAL =
+  'http://172.16.0.30:8081/summary/sources/social?size=50';
+export const URL_POSITION = 'http://172.16.0.30:8081/position';
+export const URL_STATUSES = 'http://172.16.0.30:8081/statuses';
+export const URL_REPORT = 'http://172.16.0.30:8081/report?';

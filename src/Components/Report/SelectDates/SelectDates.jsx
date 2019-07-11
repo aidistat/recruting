@@ -43,5 +43,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(SelectDates);
-
-// export default SelectDates

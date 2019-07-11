@@ -65,7 +65,7 @@ class PopupUpdateCV extends Component {
       id: this.props.user.id,
       date: moment(this.state.date).format('YYYY-MM-DDT00:00:00'),
       source: this.props.user.source,
-      statusses: status || '',
+      statuses: status || '',
       subject: this.props.user.subject || '',
       checked: checked,
       url: URL,

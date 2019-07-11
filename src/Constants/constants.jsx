@@ -41,13 +41,6 @@ export const COLUMNS = [
   }
 ];
 
-export const STATUSES_OBJ = {
-  0: 'PENDING',
-  1: 'APPLIED',
-  2: 'CALLED',
-  3: 'REJECTED',
-  4: 'INTERVIEW'
-};
 
 export const COLUMNS_WHOLEDB = [
   {
@@ -83,7 +76,8 @@ export const COLUMNS_WHOLEDB = [
   {
     Header: 'Status',
     accessor: 'statuses',
-    Cell: ({ value }) => STATUSES_OBJ[value] || ''
+    Cell: ({ value }) =>
+      String(value)
   },
   {
     Header: 'Edit',

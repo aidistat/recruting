@@ -11,23 +11,23 @@ class JobKg extends Component {
 
   async doSearch(value) {
     if (!value || value === ' ') {
-      let data = await Services.fetchJson(Constants.URL);
+      let data = await Services.fetchJson(Constants.URL_JOBKG);
       this.props.setUsers(data.content);
     } else {
-      let data = await Services.fetchJson(`${Constants.URL}fullName=${value}`);
+      let data = await Services.fetchJson(`${Constants.URL_JOBKG}&fullName=${value}`);
       this.props.setUsers(data.content);
     }
   }
 
   componentDidMount() {
-    Services.fetchJson(Constants.URL)
+    Services.fetchJson(Constants.URL_JOBKG)
       .then(data => this.props.setUsers(data.content));
   }
 
   render() {
     return (
       <div>
-        <Filters />
+        <Filters url={Constants.URL_JOBKG}/>
         <Search onSearch={value => this.doSearch(value)} />
         <Table columns={Constants.COLUMNS} data={this.props.users} />
       </div>

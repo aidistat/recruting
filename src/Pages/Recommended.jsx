@@ -11,23 +11,23 @@ class Recommended extends Component {
 
     async doSearch(value) {
         if (!value || value === ' ') {
-            let data = await Services.fetchJson(Constants.URL);
+            let data = await Services.fetchJson(Constants.URL_REFERRAL);
             this.props.setUsers(data.content);
         } else {
-            let data = await Services.fetchJson(`${Constants.URL}fullName=${value}`);
+            let data = await Services.fetchJson(`${Constants.URL_REFERRAL}&fullName=${value}`);
             this.props.setUsers(data.content);
         }
     }
 
     componentDidMount() {
-        Services.fetchJson(Constants.URL)
+        Services.fetchJson(Constants.URL_REFERRAL)
             .then(data => this.props.setUsers(data.content));
     }
 
     render() {
         return (
             <div>
-                <Filters />
+                <Filters url={Constants.URL_REFERRAL}/>
                 <Search onSearch={value => this.doSearch(value)} />
                 <Table columns={Constants.COLUMNS_FOR_RECOMMENDED} data={this.props.users} />
             </div>

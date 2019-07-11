@@ -80,7 +80,7 @@ class PopupNewCV extends Component {
       position: this.props.positions.find(item => item.name === position)
     };
     const data = JSON.stringify(resultObject);
-    Services.fetchJsonPost(Constants.URL, data)
+    Services.fetchJsonPost(Constants.BASIC_URL, data)
       .then(response => {
         if (response.status === 200) {
           this.handleClose();

@@ -85,7 +85,7 @@ class PopupUpdateCV extends Component {
   };
 
   deeleteCV = () => {
-    Services.fetchDelete(Constants.URL + '/' + this.props.user.id)
+    Services.fetchDelete(Constants.BASIC_URL + '/' + this.props.user.id)
       .then(response => {
         if (response.status === 200) {
           this.handleClose();

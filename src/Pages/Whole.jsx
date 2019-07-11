@@ -5,7 +5,8 @@ import * as Constants from '../Constants/constants';
 import {
   setTotalUsersCountAC,
   setCurrentPageAC,
-  setUsersAC
+  setUsersAC,
+  setStatusesAC
 } from '../redux/user-reducer';
 import { connect } from 'react-redux';
 import Search from '../Components/Search/Search';
@@ -20,6 +21,9 @@ class Whole extends Component {
       this.props.setUsers(data.content);
       this.props.setTotalUsersCount(data.totalElements);
     });
+    Services.fetchJson(Constants.URL_STATUSES).then(data => {
+      this.props.setStatuses(data);
+    });
   }
 
   async doSearch(value) {
@@ -33,11 +37,15 @@ class Whole extends Component {
   }
 
   render() {
-    const data = this.props.users.map(item => {
+    let data = this.props.users.map(item => {
       return {
         ...item,
         edit: <PopupUpdateCV user={item} />
       };
+    });
+    data = data.map(item => {
+      item.statuses = this.props.statuses[item.statuses] || '';
+      return item;
     });
     return (
       <div className="wrapper">
@@ -59,6 +67,8 @@ class Whole extends Component {
 
 const mapStateToProps = state => {
   return {
+    statuses: state.usersPage.statuses,
+    positions: state.usersPage.positions,
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount
@@ -67,6 +77,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    setStatuses: statuses => {
+      dispatch(setStatusesAC(statuses));
+    },
     setUsers: users => {
       dispatch(setUsersAC(users));
     },

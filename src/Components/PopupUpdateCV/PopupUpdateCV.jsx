@@ -60,22 +60,19 @@ class PopupUpdateCV extends Component {
   updateCV = () => {
     const { Name, position, URL, checked, status } = this.state;
     const resultObject = {
-      adviser: '',
+      adviser: this.props.user.adviser,
       fullName: Name,
       id: this.props.user.id,
       date: moment(this.state.date).format('YYYY-MM-DDT00:00:00'),
       source: this.props.user.source,
       statuses: status || '',
-      subject: '',
+      subject: this.props.user.subject || '',
       checked: checked,
       url: URL,
-      position: {
-        name: position,
-        id: Constants.POSITIONS[position]
-      }
+      position: this.props.positions.find(item => item.name === position)
     };
     const data = JSON.stringify(resultObject);
-    Services.fetchJsonPUT(Constants.URL + '/' + this.props.user.id, data)
+    Services.fetchJsonPUT(Constants.BASIC_URL + '/' + this.props.user.id, data)
       .then(response => {
         if (response.status === 200) {
           this.handleClose();
@@ -88,7 +85,7 @@ class PopupUpdateCV extends Component {
   };
 
   deeleteCV = () => {
-    Services.fetchDelete(Constants.URL + '/' + this.props.user.id)
+    Services.fetchDelete(Constants.BASIC_URL + '/' + this.props.user.id)
       .then(response => {
         if (response.status === 200) {
           this.handleClose();
@@ -126,7 +123,8 @@ class PopupUpdateCV extends Component {
 
   render() {
     const { open, Name, date, position, checked, status, URL } = this.state;
-
+    const positions = this.props.positions;
+    const CVstatus = this.props.statuses;
     return (
       <div>
         <Button text={'UpdateCV'} onClick={this.handleOpen} />
@@ -161,9 +159,9 @@ class PopupUpdateCV extends Component {
             <Select
               value={position}
               onChange={event =>
-                this.setValueInState('position', event.target.value)
+                this.setValueInState('position',event.target.value)
               }
-              options={Constants.TECHNOLOGIES}
+              options={positions}
               title={'Position'}
             />
             <Select
@@ -171,20 +169,20 @@ class PopupUpdateCV extends Component {
               onChange={event =>
                 this.setValueInState('checked', event.target.value)
               }
-              options={Constants.STATUS}
+              options={Constants.STATUSES}
               title={'Checked'}
             />
             <Select
-              value={Constants.STATUSES_OBJ[status] || ''}
+              value={CVstatus[status] || ''}
               onChange={event =>
                 this.setValueInState(
                   'status',
-                  Object.keys(Constants.STATUSES_OBJ).find(
-                    i => Constants.STATUSES_OBJ[i] === event.target.value
+                  Object.keys(CVstatus).find(
+                    i => CVstatus[i] === event.target.value
                   )
                 )
               }
-              options={Constants.STATUSES}
+              options={Object.keys(CVstatus).map(key => ({name: CVstatus[key]}))}
               title={'Status'}
             />
             <TextField
@@ -213,6 +211,8 @@ class PopupUpdateCV extends Component {
 
 const mapStateToProps = state => {
   return {
+    statuses: state.usersPage.statuses,
+    positions:  state.usersPage.positions,
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount

@@ -24,7 +24,7 @@ class Table extends Component {
   pageChanged = async pageNumber => {
     await this.props.setCurrentPage(pageNumber);
     const data = await Services.fetchJson(
-      `${this.props.url}page=${pageNumber - 1}`
+      `${this.props.url}&page=${pageNumber - 1}`
     );
     this.props.setUsers(data.content);
   };

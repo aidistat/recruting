@@ -1,0 +1,31 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "zen_hr_backend",
+        "image": "303247004675.dkr.ecr.eu-west-1.amazonaws.com/zen-hr:backend",
+        "essential": true,
+        "memory": 733,
+        "portMappings": [
+          {
+            "hostPort": 8080,
+            "containerPort":8080            
+          }
+        ],
+        "links": [
+            "zen_hr_front"
+        ]
+      },
+      {
+        "name": "zen_hr_front",
+        "image": "303247004675.dkr.ecr.eu-west-1.amazonaws.com/zen-hr:front",
+        "memory": 500,
+        "portMappings": [
+            {
+                "hostPort": 80,
+                "containerPort": 3000
+            }
+        ]
+      }
+    ]
+}

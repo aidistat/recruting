@@ -14,7 +14,7 @@ build:
     - docker build -t "303247004675.dkr.ecr.eu-west-1.amazonaws.com/zen-hr:front" .
     - docker push 303247004675.dkr.ecr.eu-west-1.amazonaws.com/zen-hr:front
   only:
-      - Pipeline
+      - dev
 
 before_script:
   - apk add --update python py-pip python-dev
@@ -31,5 +31,5 @@ deploy:
     - aws elasticbeanstalk update-environment --environment-name ZenHr-env --version-label $CI_CONCURRENT_ID --region eu-west-1
   
   only:
-      - Pipeline
+      - dev
   

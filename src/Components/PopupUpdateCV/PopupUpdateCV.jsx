@@ -43,10 +43,10 @@ class PopupUpdateCV extends Component {
     });
   };
 
-  addNotificationSuccess = () => {
+  addNotificationSuccess = success => {
     this.notificationDOMRef.current.addNotification({
       title: ' Success ',
-      message: 'successfully!',
+      message: success,
       type: 'success',
       insert: 'top',
       container: 'top-right',

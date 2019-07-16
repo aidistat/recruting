@@ -72,7 +72,7 @@ class PopupNewCV extends Component {
       adviser: From || '',
       url: URL,
       fullName: Name,
-      date: moment(new Date()).format('YYYY-MM-DDT00:00:00'),
+      date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
       source: source,
       statuses: '',
       subject: '',

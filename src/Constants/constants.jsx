@@ -7,6 +7,7 @@ import Social from '../Pages/Social';
 import Whole from '../Pages/Whole';
 import moment from 'moment';
 import Report from '../Pages/Report';
+import Button from "../Components/Button/Button";
 
 export const COLUMNS = [
   {
@@ -21,9 +22,9 @@ export const COLUMNS = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-      <a href={value} target="_blank">
-        CV
-      </a>
+      <Button text="CV">
+        <a href={value} target="_blank" />
+      </Button>
     )
   },
   {
@@ -41,7 +42,6 @@ export const COLUMNS = [
   }
 ];
 
-
 export const COLUMNS_WHOLEDB = [
   {
     Header: 'Name',
@@ -55,9 +55,7 @@ export const COLUMNS_WHOLEDB = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-      <a href={value} target="_blank">
-        CV
-      </a>
+        <a href={value} target="_blank"><Button text="CV" /></a>
     )
   },
   {
@@ -76,8 +74,7 @@ export const COLUMNS_WHOLEDB = [
   {
     Header: 'Status',
     accessor: 'statuses',
-    Cell: ({ value }) =>
-      String(value)
+    Cell: ({ value }) => String(value)
   },
   {
     Header: 'Edit',
@@ -107,9 +104,9 @@ export const COLUMNS_FOR_RECOMMENDED = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-      <a href={value} target="_blank">
-        CV
-      </a>
+        <Button text="CV">
+          <a href={value} target="_blank" />
+        </Button>
     )
   }
 ];
@@ -132,9 +129,9 @@ export const COLUMNS_FOR_SOCIAL = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-      <a href={value} target="_blank">
-        CV
-      </a>
+        <Button text="CV">
+          <a href={value} target="_blank" />
+        </Button>
     )
   }
 ];
@@ -170,17 +167,17 @@ export const ROUTES = [
   },
   { title: 'Report', path: '/report', component: Report, newTab: true }
 ];
-export const BASIC_URL = 'http://172.16.0.30:8081/summary'
-export const URL = 'http://172.16.0.30:8081/summary?size=50';
-export const URL_HH = 'http://172.16.0.30:8081/summary/sources/hh?size=50';
+export const BASIC_URL = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary';
+export const URL = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary?size=50';
+export const URL_HH = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary/sources/hh?size=50';
 export const URL_JOBKG =
-  'http://172.16.0.30:8081/summary/sources/jobkg?size=50';
+  'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary/sources/jobkg?size=50';
 export const URL_GMAIL =
-  'http://172.16.0.30:8081/summary/sources/gmail?size=50';
+  'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary/sources/gmail?size=50';
 export const URL_REFERRAL =
-  'http://172.16.0.30:8081/summary/sources/fromadvisor?size=50';
+  'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary/sources/fromadvisor?size=50';
 export const URL_SOCIAL =
-  'http://172.16.0.30:8081/summary/sources/social?size=50';
-export const URL_POSITION = 'http://172.16.0.30:8081/position';
-export const URL_STATUSES = 'http://172.16.0.30:8081/statuses';
-export const URL_REPORT = 'http://172.16.0.30:8081/report?';
+  'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/summary/sources/social?size=50';
+export const URL_POSITION = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/position';
+export const URL_STATUSES = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/statuses';
+export const URL_REPORT = 'http://zenhr-env.3vdbywfeib.eu-west-1.elasticbeanstalk.com:8081/report?';

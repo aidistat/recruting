@@ -22,9 +22,7 @@ export const COLUMNS = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-      <Button text="CV">
-        <a href={value} target="_blank" />
-      </Button>
+        <a href={value} target="_blank"><Button text="CV" /></a>
     )
   },
   {
@@ -104,9 +102,7 @@ export const COLUMNS_FOR_RECOMMENDED = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-        <Button text="CV">
-          <a href={value} target="_blank" />
-        </Button>
+        <a href={value} target="_blank"><Button text="CV" /></a>
     )
   }
 ];

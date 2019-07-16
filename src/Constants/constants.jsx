@@ -135,8 +135,8 @@ export const COLUMNS_FOR_SOCIAL = [
 export const STATUSES = [{ name: 'True' }, { name: 'False' }];
 
 export const sourcesForAddCV = [
-  { id: 3, name: 'FROMADVISOR' },
-  { id: 4, name: 'SOCIAL' }
+  { id: 3, name: 'Refferal' },
+  { id: 4, name: 'Social' }
 ];
 
 export const ROUTES = [

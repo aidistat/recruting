@@ -125,9 +125,7 @@ export const COLUMNS_FOR_SOCIAL = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-        <Button text="CV">
-          <a href={value} target="_blank" />
-        </Button>
+        <a href={value} target="_blank"><Button text="CV" /></a>
     )
   }
 ];

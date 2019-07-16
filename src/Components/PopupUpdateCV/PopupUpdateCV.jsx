@@ -193,7 +193,7 @@ class PopupUpdateCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.setValueInState('URL', event.target.value)
+                this.setValueInState('url', event.target.value)
               }
             />
           </DialogContent>

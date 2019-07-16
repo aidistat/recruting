@@ -83,7 +83,7 @@ class PopupNewCV extends Component {
     Services.fetchJsonPost(Constants.BASIC_URL, data)
       .then(response => {
         if (response.status === 200) {
-          this.handleClose();
+          this.addNotificationSuccess('CV was successfully added!')
         } else {
           this.addNotificationError('error');
         }

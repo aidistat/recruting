@@ -88,8 +88,7 @@ class PopupUpdateCV extends Component {
     Services.fetchDelete(Constants.BASIC_URL + '/' + this.props.user.id)
       .then(response => {
         if (response.status === 200) {
-          this.handleClose();
-          this.addNotificationSuccess();
+          this.addNotificationSuccess('CV was successfully updated!');
         } else {
           this.addNotificationError('error');
         }

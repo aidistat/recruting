@@ -22,29 +22,22 @@
 }
 
 .detailRowPosition {
-    margin-left: 10px;
+    margin-right: 20px;
 }
 
 .detailRowComment {
     margin-left: 10px;
 }
-
-/*LanguageList*/
-.positions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 200px;
-}
-
 .language-position {
     left: 0;
     margin-right: 10px;
+    font-size: 14px;
 }
 
 .language-count {
     right: 0;
     float: right;
+    font-size: 14px;
 }
 
 .language {
@@ -67,6 +60,8 @@
 
 .sourceLogo {
     margin-right: 10px;
+    width: 40px;
+    height: 20px;
 }
 
 /*Commment*/
@@ -227,4 +222,15 @@
     justify-content: center;
     height: 100%;
     padding-right: 20px;
+}
+.positions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.positions-list {
+    display: flex;
+    flex-direction: column;
 }

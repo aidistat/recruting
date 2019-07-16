@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import { startRequest, successRequest, errorRequest } from './report-actions';
 
 const initialState = {
-  isReporting: false,
+  isReporting: true,
   isLoading: false,
   isError: false,
   error: '',

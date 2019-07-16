@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-
 import gmailLogo from '../../public/logoForReport/gmail.png';
 import hhLogo from '../../public/logoForReport/hh.png';
 import jobkgLogo from '../../public/logoForReport/jobkg.png';
 import SelectDates from '../Components/Report/SelectDates/SelectDates';
-
 import generateXLSX from '../Services/generateAndDownloadXLSX';
 import Button from '../Components/Button/Button'
 import { Arrow } from '../Components/Arrow/Arrow';
 import Error from '../Components/Error/Error';
-
 import {
   isLoading,
   selectData,
   isError,
   selectError,
 } from '../redux/report/report-selectors';
-
 import './report.css'
 
 class Report extends Component {
@@ -225,7 +220,7 @@ const Diagram = (props) => {
       <div className="statusRow">
         <div className="diagramRow">
           <div className="invited">
-            <div className="diagramLabel">Приглашено на собеседование</div>
+            <div className="diagramLabel">Приглашено</div>
             <div className="diagramValue">{getCountByStatus(STATUSES.INVITED)}</div>
           </div>
         </div>

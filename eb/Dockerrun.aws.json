@@ -8,8 +8,8 @@
         "memory": 733,
         "portMappings": [
           {
-            "hostPort": 8080,
-            "containerPort":8080            
+            "hostPort": 8081,
+            "containerPort":8081            
           }
         ],
         "links": [

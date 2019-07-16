@@ -9,7 +9,7 @@
         "portMappings": [
           {
             "hostPort": 8081,
-            "containerPort":8081            
+            "containerPort":8081         
           }
         ],
         "links": [

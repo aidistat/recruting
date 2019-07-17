@@ -7,7 +7,10 @@ import Container from '@material-ui/core/Container';
 
 import gmailLogo from '../../public/logoForReport/gmail.png';
 import hhLogo from '../../public/logoForReport/hh.png';
+import socialLogo from '../../public/logoForReport/social.png';
 import jobkgLogo from '../../public/logoForReport/jobkg.png';
+import reffLogo from '../../public/logoForReport/reff.jpg';
+
 import SelectDates from '../Components/Report/SelectDates/SelectDates';
 
 import generateXLSX from '../Services/generateAndDownloadXLSX';
@@ -135,6 +138,8 @@ const CVSources = (props) => {
     GMAIL: gmailLogo,
     HH: hhLogo,
     JOBKG: jobkgLogo,
+    FROMADVISOR: reffLogo,
+    SOCIAL: socialLogo
   };
 
   return (

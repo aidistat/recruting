@@ -107,11 +107,6 @@ class PopupNewCV extends Component {
       From: undefined
     });
   };
-  bind = (field, e) => {
-    this.setState({
-      [field]: e.target.value
-    });
-  };
 
   render() {
     const positions = this.props.positions;
@@ -152,7 +147,7 @@ class PopupNewCV extends Component {
                 type="text"
                 fullWidth
                 onChange={event =>
-                  this.bind('from', event)
+                  this.setValueInState('from', event.target.value)
                 }
               />
             )}
@@ -163,12 +158,12 @@ class PopupNewCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.bind('name', event)
+                this.setValueInState('name', event.target.value)
               }
             />
             <Select
               onChange={event =>
-                this.bind('position', event)
+                this.setValueInState('position', event.target.value)
               }
               options={positions}
               title={'Position'}
@@ -180,7 +175,7 @@ class PopupNewCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.bind('url', event)
+                this.setValueInState('url', event.target.value)
               }
             />
           </DialogContent>

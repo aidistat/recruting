@@ -67,11 +67,11 @@ class PopupNewCV extends Component {
   };
 
   addCV = () => {
-    const { source, name, position, url, from } = this.state;
+    const { source, Name, position, URL, From } = this.state;
     const resultObject = {
-      adviser: from || '',
-      url: url,
-      fullName: name,
+      adviser: From || '',
+      url: URL,
+      fullName: Name,
       date: moment(new Date()).format('YYYY-MM-DDTHH:MM:SS'),
       source: source,
       statuses: '',
@@ -147,7 +147,7 @@ class PopupNewCV extends Component {
                 type="text"
                 fullWidth
                 onChange={event =>
-                  this.setValueInState('from', event.target.value)
+                  this.setValueInState('From', event.target.value)
                 }
               />
             )}
@@ -158,7 +158,7 @@ class PopupNewCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.setValueInState('name', event.target.value)
+                this.setValueInState('Name', event.target.value)
               }
             />
             <Select
@@ -175,7 +175,7 @@ class PopupNewCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.setValueInState('url', event.target.value)
+                this.setValueInState('URL', event.target.value)
               }
             />
           </DialogContent>

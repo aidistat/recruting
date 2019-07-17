@@ -22,7 +22,7 @@ export const COLUMNS = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-        <a href={value} target="_blank"><Button text="CV" /></a>
+        value && <a href={value} target="_blank"><Button text="CV" /></a>
     )
   },
   {
@@ -53,7 +53,7 @@ export const COLUMNS_WHOLEDB = [
     Header: 'Link',
     accessor: 'url',
     Cell: ({ value }) => (
-        <a href={value} target="_blank"><Button text="CV" /></a>
+        value && <a href={value} target="_blank"><Button text="CV" /></a>
     )
   },
   {

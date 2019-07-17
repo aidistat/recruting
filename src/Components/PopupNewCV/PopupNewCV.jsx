@@ -88,9 +88,6 @@ class PopupNewCV extends Component {
           this.addNotificationError('error');
         }
       })
-      .catch(error => {
-        this.addNotificationError(error.message);
-      });
   };
 
   handleOpen = () => {

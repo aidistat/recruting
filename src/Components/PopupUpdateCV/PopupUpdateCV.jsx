@@ -76,12 +76,11 @@ class PopupUpdateCV extends Component {
       .then(response => {
         if (response.status === 200) {
           this.handleClose();
-          this.addNotificationSuccess();
+          this.addNotificationSuccess('CV was successfully updated!');
         } else {
           this.addNotificationError('error');
         }
       })
-      .catch(error => this.addNotificationError(error.message));
   };
 
   deeleteCV = () => {

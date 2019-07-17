@@ -75,26 +75,22 @@ class PopupUpdateCV extends Component {
     Services.fetchJsonPUT(Constants.BASIC_URL + '/' + this.props.user.id, data)
       .then(response => {
         if (response.status === 200) {
-          this.handleClose();
           this.addNotificationSuccess('CV was successfully updated!');
         } else {
-          this.addNotificationError('error');
+          this.addNotificationError('CV was not updated');
         }
       })
   };
 
-  deeleteCV = () => {
+  deleteCV = () => {
     Services.fetchDelete(Constants.BASIC_URL + '/' + this.props.user.id)
       .then(response => {
         if (response.status === 200) {
-          this.addNotificationSuccess('CV was successfully updated!');
+          this.addNotificationSuccess('CV was successfully deleted!');
         } else {
-          this.addNotificationError('error');
+          this.addNotificationError('CV was not deleted!');
         }
       })
-      .catch(error => {
-        this.addNotificationError(error.message);
-      });
   };
 
   handleOpen = () => {
@@ -191,13 +187,13 @@ class PopupUpdateCV extends Component {
               type="text"
               fullWidth
               onChange={event =>
-                this.setValueInState('url', event.target.value)
+                this.setValueInState('URL', event.target.value)
               }
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} text={'Cancel'} />
-            <Button onClick={this.deeleteCV} text={'Delete'} />
+            <Button onClick={this.deleteCV} text={'Delete'} />
 
             <Button onClick={() => this.updateCV(this.state)} text={'SAVE'} />
           </DialogActions>

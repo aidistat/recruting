@@ -7,7 +7,7 @@ function reportThunk(params) {
       dispatch(startRequest());
       fetch(`${Constants.URL_REPORT}startDate=${params.startDate}&endDate=${params.endDate}`)
          .then(response =>  response.json())
-         .then(data => {console.log(data); dispatch(successRequest(data))})
+         .then(data => dispatch(successRequest(data)))
          .catch(error => dispatch(errorRequest(error.message)))
    }
 }

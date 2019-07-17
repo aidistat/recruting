@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-
 import gmailLogo from '../../public/logoForReport/gmail.png';
 import hhLogo from '../../public/logoForReport/hh.png';
 import jobkgLogo from '../../public/logoForReport/jobkg.png';
 import SelectDates from '../Components/Report/SelectDates/SelectDates';
-
 import generateXLSX from '../Services/generateAndDownloadXLSX';
 import Button from '../Components/Button/Button'
 import { Arrow } from '../Components/Arrow/Arrow';
 import Error from '../Components/Error/Error';
-
 import {
   isLoading,
   selectData,
   isError,
   selectError,
 } from '../redux/report/report-selectors';
-
 import './report.css'
 
 class Report extends Component {
@@ -108,7 +103,7 @@ function DownloadXLSX(props) {
 
 function PositionList({ positions }) {
   return (
-    <div className="positions">
+    <div className="positions-list">
       {positions.map(({ position, count }) => (
         <div key={position} className="language">
           <span className="language-position">{position} </span>
@@ -173,7 +168,7 @@ CVSources.propTypes = {
 
 const STATUSES = {
   CALLED: 'CALLED',
-  INVITED: 'INVITED',
+  INTERVIEW: 'INTERVIEW',
   PENDING: 'PENDING',
   REJECTED: 'REJECTED',
   APPLIED: 'APPLIED',
@@ -209,9 +204,6 @@ const Diagram = (props) => {
         </div>
         <div className="detailRow">
           <Arrow/>
-          <div className="detailRowPosition">
-            <PositionList positions={getPositionsList(STATUSES.CALLED)}/>
-          </div>
           <div className="detailRowComment">
             <Comment
               onChange={(event) => props.onComment(STATUSES.CALLED, event.target.value)}
@@ -225,15 +217,12 @@ const Diagram = (props) => {
       <div className="statusRow">
         <div className="diagramRow">
           <div className="invited">
-            <div className="diagramLabel">Приглашено на собеседование</div>
-            <div className="diagramValue">{getCountByStatus(STATUSES.INVITED)}</div>
+            <div className="diagramLabel">Приглашено</div>
+            <div className="diagramValue">{getCountByStatus(STATUSES.INTERVIEW)}</div>
           </div>
         </div>
         <div className="detailRow">
           <Arrow/>
-          <div className="detailRowPosition">
-            <PositionList positions={getPositionsList(STATUSES.INVITED)}/>
-          </div>
           <div className="detailRowComment">
             <Comment
               onChange={(event) => props.onComment(STATUSES.INVITED, event.target.value)}
@@ -253,9 +242,6 @@ const Diagram = (props) => {
         </div>
         <div className="detailRow">
           <Arrow/>
-          <div className="detailRowPosition">
-            <PositionList positions={getPositionsList(STATUSES.PENDING)}/>
-          </div>
           <div className="detailRowComment">
             <Comment
               onChange={(event) => props.onComment(STATUSES.PENDING, event.target.value)}
@@ -275,9 +261,6 @@ const Diagram = (props) => {
         </div>
         <div className="detailRow">
           <Arrow/>
-          <div className="detailRowPosition">
-            <PositionList positions={getPositionsList(STATUSES.REJECTED)}/>
-          </div>
           <div className="detailRowComment">
             <Comment
               onChange={(event) => props.onComment(STATUSES.REJECTED, event.target.value)}
@@ -297,9 +280,6 @@ const Diagram = (props) => {
         </div>
         <div className="detailRow">
           <Arrow/>
-          <div className="detailRowPosition">
-            <PositionList positions={getPositionsList(STATUSES.APPLIED)}/>
-          </div>
           <div className="detailRowComment">
             <Comment
               onChange={(event) => props.onComment(STATUSES.APPLIED, event.target.value)}
@@ -307,6 +287,28 @@ const Diagram = (props) => {
               label="Коментарий:"
             />
           </div>
+        </div>
+      </div>
+      <div className="positions">
+        <div className="detailRowPosition">
+          Called
+          <PositionList positions={getPositionsList(STATUSES.CALLED)}/>
+        </div>
+        <div className="detailRowPosition">
+          Invited
+          <PositionList positions={getPositionsList(STATUSES.INTERVIEW)}/>
+        </div>
+        <div className="detailRowPosition">
+          Pending
+          <PositionList positions={getPositionsList(STATUSES.PENDING)}/>
+        </div>
+        <div className="detailRowPosition">
+          Rejected
+          <PositionList positions={getPositionsList(STATUSES.REJECTED)}/>
+        </div>
+        <div className="detailRowPosition">
+          Applied
+          <PositionList positions={getPositionsList(STATUSES.APPLIED)}/>
         </div>
       </div>
     </div>

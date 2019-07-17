@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    margin-right: 60px;
 }
 
 .detailRow {
@@ -21,29 +22,22 @@
 }
 
 .detailRowPosition {
-    margin-left: 10px;
+    margin-right: 20px;
 }
 
 .detailRowComment {
     margin-left: 10px;
 }
-
-/*LanguageList*/
-.positions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 200px;
-}
-
 .language-position {
     left: 0;
     margin-right: 10px;
+    font-size: 14px;
 }
 
 .language-count {
     right: 0;
     float: right;
+    font-size: 14px;
 }
 
 .language {
@@ -66,6 +60,8 @@
 
 .sourceLogo {
     margin-right: 10px;
+    width: 40px;
+    height: 20px;
 }
 
 /*Commment*/
@@ -172,35 +168,35 @@
 
 .called {
     position: relative;
-    width: 100%;
+    width: 475px;
     height: 50px;
     background: #82bce0;
 }
 
 .invited {
     position: relative;
-    width: 90%;
+    width: 89%;
     height: 50px;
     background: #edeb77;
 }
 
 .pending {
     position: relative;
-    width: 80%;
+    width: 78%;
     height: 50px;
     background: #ffa159;
 }
 
 .rejected {
     position: relative;
-    width: 70%;
+    width: 67%;
     height: 50px;
     background: #ff5252;
 }
 
 .applied {
     position: relative;
-    width: 62%;
+    width: 56%;
     height: 50px;
     background: #62f09b;
 }
@@ -211,10 +207,11 @@
     justify-content: center;
     align-items: center;
     line-height: 1.2rem;
+    font-size: 14px;
     float: left;
     text-align: center;
     height: 100%;
-    width: 200px;
+    width: 130px;
     background: #000;
     color: #fff;
 }
@@ -224,4 +221,16 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    padding-right: 20px;
+}
+.positions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.positions-list {
+    display: flex;
+    flex-direction: column;
 }
